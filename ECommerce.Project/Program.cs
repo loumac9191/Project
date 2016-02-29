@@ -11,20 +11,20 @@ namespace ECommerce.Project
 {
     class Program
     {
-        private static readonly ILog logger = LogManager.GetLogger("Program.cs");
+        //private static readonly ILog logger = LogManager.GetLogger("Program.cs");
 
         static void Main(string[] args)
         {
-            try
-            {
-                int number1 = 10; 
-                int number2 = 0;
-                int result = number1 / number2;
-            }
-            catch (DivideByZeroException exception)
-            {
-                logger.Error(exception.Message); Console.WriteLine("You can't divide by zero!");
-            }
+        //    try
+        //    {
+        //        int number1 = 10; 
+        //        int number2 = 0;
+        //        int result = number1 / number2;
+        //    }
+        //    catch (DivideByZeroException exception)
+        //    {
+        //        logger.Error(exception.Message); Console.WriteLine("You can't divide by zero!");
+        //    }
         }
     }
 }
