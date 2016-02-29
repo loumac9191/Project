@@ -27,12 +27,17 @@ namespace ECommerce.Project
 
             if (itemToRemove == null)
             {
-                
+                //need to find code for this
+                //returns a message that says that the item does not exist in the basket
             }
             else
             {
                 basket.Remove(itemToRemove);
             }
+        }
+        public Dictionary<Item, int> GetContents()
+        {
+            return basket;
         }
     }
 }

@@ -49,10 +49,10 @@ namespace ECommerce.Tests
             tBasket.AddItem(tItem2);
             tBasket.AddItem(tItem);
             tBasket.RemoveItem("ProductName");
-            tBasket.A
+            Dictionary<Item,int> tOutput = tBasket.GetContents();
 
             //Assert
-            Assert.AreEqual(2, tBasket.);
+            Assert.AreEqual(1, tOutput.Values.Count);
         }
     }
 }
