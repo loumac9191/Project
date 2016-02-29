@@ -16,5 +16,23 @@ namespace ECommerce.Project
             basket.Add(itemToAdd,1);
             return basket;
         }
+        public void RemoveItem(string itemName)
+        {
+            //void 
+            Item itemToRemove = basket.SingleOrDefault(i => i.Key.ItemName == itemName).Key;
+
+            //def if statement
+            //if the itemToRemove is null then give a message saying that no item exists in the basket
+            //possibly have this check a database to see whether the itemName is contained
+
+            if (itemToRemove == null)
+            {
+                
+            }
+            else
+            {
+                basket.Remove(itemToRemove);
+            }
+        }
     }
 }

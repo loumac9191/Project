@@ -9,6 +9,7 @@ namespace ECommerce.Project
     public class Item
     {
         //public int ItemI { get; set; }
-        public int ItemId;
+        public string ItemId;
+        public string ItemName;
     }
 }
