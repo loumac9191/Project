@@ -6,8 +6,8 @@
     <ProjectGuid>{D232A3DA-5325-4D62-826C-A73F11BB63E6}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Project.Tests</RootNamespace>
-    <AssemblyName>Project.Tests</AssemblyName>
+    <RootNamespace>ECommerce.Tests</RootNamespace>
+    <AssemblyName>ECommerce.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -54,9 +54,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Project.NET\Project.NET.csproj">
+    <ProjectReference Include="..\Project.NET\ECommerce.Project.csproj">
       <Project>{1cc88b63-7a29-4360-89ce-6202fd1adfce}</Project>
-      <Name>Project.NET</Name>
+      <Name>ECommerce.Project</Name>
     </ProjectReference>
   </ItemGroup>
   <Choose>

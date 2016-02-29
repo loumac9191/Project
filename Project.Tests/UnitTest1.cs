@@ -1,8 +1,8 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Project.NET;
+using ECommerce.Project;
 
-namespace Project.Tests
+namespace ECommerce.Tests
 {
     [TestClass]
     public class UnitTest1
