@@ -15,11 +15,6 @@ namespace ECommerce.Project
 
         static void Main(string[] args)
         {
-            Basket baskettest = new Basket();
-            Basket baskettest2 = new Basket();
-            Console.WriteLine(baskettest.basketID);
-            Console.WriteLine(baskettest2.basketID);
-            Console.ReadLine();
         //    try
         //    {
         //        int number1 = 10; 

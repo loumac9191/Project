@@ -41,7 +41,7 @@ namespace ECommerce.Tests
         [TestMethod]
         public void TestRemoveItem_ReturnsADictionaryOfOneItemWithOneCount_WhenGivenTwoItemsAndHaveOneRemoved()
         {
-                        //Arrange
+            //Arrange
             Basket tBasket = new Basket();
             Item tItem = new Item();
             tItem.ItemName = "ProductName";
@@ -55,6 +55,39 @@ namespace ECommerce.Tests
 
             //Assert
             Assert.AreEqual(1, tOutput.Values.Count);
+        }
+        [TestMethod]
+        public void TestCalculatePrice_ReturnsTotalPriceOfItemsInBasket_WhenGivenOneItemWithPriceOf25GBP()
+        {
+            //Arrange
+            Basket tBasket = new Basket();
+            Item tItem = new Item();
+            tItem.Price = 25;
+
+            //Act
+            tBasket.AddItem(tItem);
+            int total = tBasket.CalculatePrice();
+
+            //Assert
+            Assert.AreEqual(25, total);
+        }
+        [TestMethod]
+        public void TestCalculatePrice_ReturnsTotalPriceOfItemsInBasket_WhenGivenTwoItemsBothWithPriceOf25GBP()
+        {
+            //Arrange
+            Basket tBasket = new Basket();
+            Item tItem = new Item();
+            tItem.Price = 25;
+            Item tItem2 = new Item();
+            tItem2.Price = 25;
+
+            //Act
+            tBasket.AddItem(tItem);
+            tBasket.AddItem(tItem2);
+            int total = tBasket.CalculatePrice();
+
+            //Assert
+            Assert.AreEqual(50, total);
         }
     }
 }
