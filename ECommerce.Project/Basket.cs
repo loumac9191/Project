@@ -9,12 +9,12 @@ namespace ECommerce.Project
     public class Basket
     {
         Dictionary<Item,int> basket = new Dictionary<Item,int>();
+        public Guid basketID = Guid.NewGuid();
 
         //to do later, make sure this adds to database as well
-        public Dictionary<Item, int> AddItem(Item itemToAdd)
+        public void AddItem(Item itemToAdd)
         {
             basket.Add(itemToAdd,1);
-            return basket;
         }
         public void RemoveItem(string itemName)
         {

@@ -16,7 +16,8 @@ namespace ECommerce.Tests
             Item tItem = new Item();
 
             //Act
-            Dictionary<Item, int> tOutput = tBasket.AddItem(tItem);
+            tBasket.AddItem(tItem);
+            Dictionary<Item, int> tOutput = tBasket.GetContents();
 
             //Assert
             Assert.AreEqual(1, tOutput.Count);
@@ -31,7 +32,8 @@ namespace ECommerce.Tests
 
             //Act
             tBasket.AddItem(tItem2);
-            Dictionary<Item, int> tOutput = tBasket.AddItem(tItem);
+            tBasket.AddItem(tItem);
+            Dictionary<Item, int> tOutput = tBasket.GetContents();
 
             //Assert
             Assert.AreEqual(2, tOutput.Values.Count);
