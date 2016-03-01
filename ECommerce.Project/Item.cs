@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ECommerce.Project
 {
-    public class Item
+    public class Item //intention is to have this as an abstract class or interface?
     {
         //public int ItemI { get; set; }
         public string ItemId;

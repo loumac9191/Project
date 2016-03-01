@@ -8,6 +8,8 @@ namespace ECommerce.Project
 {
     public class Basket
     {
+        //When a basket is instantiated, it should not have any constructor
+        //Upon instantiation, it will be given a blank list, uniqueID and a capacity for price
         Dictionary<Item,int> basket = new Dictionary<Item,int>();
         public Guid basketID = Guid.NewGuid();
         public int totalPrice;
