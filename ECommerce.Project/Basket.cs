@@ -10,9 +10,9 @@ namespace ECommerce.Project
     {
         //When a basket is instantiated, it should not have any constructor
         //Upon instantiation, it will be given a blank list, uniqueID and a capacity for price
-        Dictionary<Item,int> basket = new Dictionary<Item,int>();
-        public Guid basketID = Guid.NewGuid();
-        public int totalPrice;
+        private Dictionary<Item,int> basket = new Dictionary<Item,int>();
+        private Guid basketID = Guid.NewGuid();
+        private int totalPrice;
 
         //to do later, make sure this adds to database as well
         //check to see what is being added isnt null
@@ -44,6 +44,12 @@ namespace ECommerce.Project
         {
             return basket;
         }
+        public string GetBasketID()
+        {
+            string basketID = this.basketID.ToString();
+            return basketID;
+        }
+
         public int CalculatePrice()
         {
             //if statement inside to check whether items exist
