@@ -11,5 +11,6 @@ namespace ECommerce.Project
         //public int ItemI { get; set; }
         public string ItemId;
         public string ItemName;
+        public int Price;
     }
 }
