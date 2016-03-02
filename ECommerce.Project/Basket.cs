@@ -20,6 +20,7 @@ namespace ECommerce.Project
         {
             basket.Add(itemToAdd,1);
         }
+
         public void RemoveItem(string itemName)
         {
             //void 
@@ -40,10 +41,12 @@ namespace ECommerce.Project
                 basket.Remove(itemToRemove);
             }
         }
+
         public Dictionary<Item, int> GetContents()
         {
             return basket;
         }
+
         public string GetBasketID()
         {
             string basketID = this.basketID.ToString();
