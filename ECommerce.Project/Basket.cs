@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EntityFramework.Project;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,14 +11,21 @@ namespace ECommerce.Project
     {
         //When a basket is instantiated, it should not have any constructor
         //Upon instantiation, it will be given a blank list, uniqueID and a capacity for price
-        private Dictionary<Item,int> basket = new Dictionary<Item,int>();
+        private Dictionary<item,int> basket = new Dictionary<item,int>();
         private Guid basketID = Guid.NewGuid();
-        private double totalPrice;
+        private decimal totalPrice = 0m;
+        private IItemRepository _itemRepo;
+
+        public Basket(IItemRepository itemRepo) 
+        {
+            _itemRepo = itemRepo;
+        }
 
         //to do later, make sure this adds to database as well
         //check to see what is being added isnt null
-        public void AddItem(Item itemToAdd)
+        public void AddItem(item itemToAdd)
         {
+            _itemRepo.AddItem(itemToAdd);
             basket.Add(itemToAdd,1);
         }
 
@@ -26,7 +34,7 @@ namespace ECommerce.Project
             //recommend to have this return a string that states whether the item was removed or not
             //string removeItemResult;
             //void 
-            Item itemToRemove = basket.SingleOrDefault(i => i.Key.ItemName == itemName).Key;
+            item itemToRemove = basket.SingleOrDefault(i => i.Key.name == itemName).Key;
 
             //def if statement
             //if the itemToRemove is null then give a message saying that no item exists in the basket
@@ -45,7 +53,7 @@ namespace ECommerce.Project
             }
         }
 
-        public Dictionary<Item, int> GetContents()
+        public Dictionary<item, int> GetContents()
         {
             return basket;
         }
@@ -56,12 +64,12 @@ namespace ECommerce.Project
             return basketID;
         }
 
-        public double CalculatePrice()
+        public decimal CalculatePrice()
         {
             //if statement inside to check whether items exist
-            foreach (KeyValuePair<Item, int> item in basket)
+            foreach (KeyValuePair<item, int> item in basket)
             {
-                totalPrice += item.Key.Price;
+                totalPrice += (decimal)item.Key.price;
             }
             return totalPrice;
         }

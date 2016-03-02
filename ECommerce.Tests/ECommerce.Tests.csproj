@@ -35,6 +35,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Moq">
+      <HintPath>..\packages\Moq.4.2.1510.2205\lib\net40\Moq.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
   </ItemGroup>
   <Choose>
@@ -52,6 +55,7 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Basket.Tests.cs" />
+    <Compile Include="EntityFrameworkTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ECommerce.Project\ECommerce.Project.csproj">
@@ -62,6 +66,9 @@
       <Project>{8dd73c6a-6873-42f4-b7e8-a6b7fbb9cc45}</Project>
       <Name>EntityFramework.Project</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

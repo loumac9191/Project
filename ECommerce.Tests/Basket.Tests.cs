@@ -2,22 +2,25 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
 using ECommerce.Project;
+using EntityFramework.Project;
 
 namespace ECommerce.Tests
 {
     [TestClass]
     public class BasketTests
     {
+        //doubles need to be changed to decimal
         [TestMethod]
         public void TestAddItem_ReturnsADictionaryOfOneItemWithOneCount_WhenGivenOneItem()
         {
             //Arrange
-            Basket tBasket = new Basket();
-            Item tItem = new Item();
+            IItemRepository iRepository = new ItemRepository();
+            Basket tBasket = new Basket(iRepository);
+            item tItem = new item();
 
             //Act
             tBasket.AddItem(tItem);
-            Dictionary<Item, int> tOutput = tBasket.GetContents();
+            Dictionary<item, int> tOutput = tBasket.GetContents();
 
             //Assert
             Assert.AreEqual(1, tOutput.Count);
@@ -26,14 +29,15 @@ namespace ECommerce.Tests
         public void TestAddItem_ReturnsADictionaryOfOneItemWithTwoCount_WhenGivenOneItem()
         {
             //Arrange
-            Basket tBasket = new Basket();
-            Item tItem = new Item();
-            Item tItem2 = new Item();
+            IItemRepository iRepository = new ItemRepository();
+            Basket tBasket = new Basket(iRepository);
+            item tItem = new item();
+            item tItem2 = new item();
 
             //Act
             tBasket.AddItem(tItem2);
             tBasket.AddItem(tItem);
-            Dictionary<Item, int> tOutput = tBasket.GetContents();
+            Dictionary<item, int> tOutput = tBasket.GetContents();
 
             //Assert
             Assert.AreEqual(2, tOutput.Values.Count);
@@ -42,16 +46,17 @@ namespace ECommerce.Tests
         public void TestRemoveItem_ReturnsADictionaryOfOneItemWithOneCount_WhenGivenTwoItemsAndHaveOneRemoved()
         {
             //Arrange
-            Basket tBasket = new Basket();
-            Item tItem = new Item();
-            tItem.ItemName = "ProductName";
-            Item tItem2 = new Item();
+            IItemRepository iRepository = new ItemRepository();
+            Basket tBasket = new Basket(iRepository);
+            item tItem = new item();
+            tItem.name = "ProductName";
+            item tItem2 = new item();
 
             //Act
             tBasket.AddItem(tItem2);
             tBasket.AddItem(tItem);
             tBasket.RemoveItem("ProductName");
-            Dictionary<Item,int> tOutput = tBasket.GetContents();
+            Dictionary<item,int> tOutput = tBasket.GetContents();
 
             //Assert
             Assert.AreEqual(1, tOutput.Values.Count);
@@ -60,13 +65,14 @@ namespace ECommerce.Tests
         public void TestCalculatePrice_ReturnsTotalPriceOfItemsInBasket_WhenGivenOneItemWithPriceOf25GBP()
         {
             //Arrange
-            Basket tBasket = new Basket();
-            Item tItem = new Item();
-            tItem.Price = 25;
+            IItemRepository iRepository = new ItemRepository();
+            Basket tBasket = new Basket(iRepository);
+            item tItem = new item();
+            tItem.price = 25;
 
             //Act
             tBasket.AddItem(tItem);
-            double total = tBasket.CalculatePrice();
+            decimal total = tBasket.CalculatePrice();
 
             //Assert
             Assert.AreEqual(25, total);
@@ -75,16 +81,17 @@ namespace ECommerce.Tests
         public void TestCalculatePrice_ReturnsTotalPriceOfItemsInBasket_WhenGivenTwoItemsBothWithPriceOf25GBP()
         {
             //Arrange
-            Basket tBasket = new Basket();
-            Item tItem = new Item();
-            tItem.Price = 25;
-            Item tItem2 = new Item();
-            tItem2.Price = 25;
+            IItemRepository iRepository = new ItemRepository();
+            Basket tBasket = new Basket(iRepository);
+            item tItem = new item();
+            tItem.price = 25;
+            item tItem2 = new item();
+            tItem2.price = 25;
 
             //Act
             tBasket.AddItem(tItem);
             tBasket.AddItem(tItem2);
-            double total = tBasket.CalculatePrice();
+            decimal total = tBasket.CalculatePrice();
 
             //Assert
             Assert.AreEqual(50, total);

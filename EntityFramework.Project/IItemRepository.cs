@@ -4,14 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-
 namespace EntityFramework.Project
 {
-    public class ItemRepository : IItemRepository
+    public interface IItemRepository
     {
-        public void AddItem(item itemToAdd)
-        {
-
-        }
+        void AddItem(item itemToAdd);
     }
 }

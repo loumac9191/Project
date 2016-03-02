@@ -65,6 +65,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ECommerceProjectModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="IItemRepository.cs" />
     <Compile Include="item.cs">
       <DependentUpon>ECommerceProjectModel.tt</DependentUpon>
     </Compile>
@@ -102,12 +103,6 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\ECommerce.Project\ECommerce.Project.csproj">
-      <Project>{1cc88b63-7a29-4360-89ce-6202fd1adfce}</Project>
-      <Name>ECommerce.Project</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
