@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ECommerce.Project
 {
-    public abstract class Item : IBuyable 
+    public class Item : IBuyable 
     {
         //public int ItemI { get; set; }
         //want Items to be read from an external database

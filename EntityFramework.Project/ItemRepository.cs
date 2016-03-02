@@ -8,6 +8,16 @@ namespace EntityFramework.Project
 {
     public class ItemRepository
     {
-
+        public void testRead()
+        {
+            string test;
+            using (var context = new ProjectDatabaseEntities())
+            {
+                //foreach (var item in context)
+                //{
+                //    string test;
+                //}
+            }
+        }
     }
 }

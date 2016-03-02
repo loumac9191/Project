@@ -58,6 +58,10 @@
       <Project>{1cc88b63-7a29-4360-89ce-6202fd1adfce}</Project>
       <Name>ECommerce.Project</Name>
     </ProjectReference>
+    <ProjectReference Include="..\EntityFramework.Project\EntityFramework.Project.csproj">
+      <Project>{8dd73c6a-6873-42f4-b7e8-a6b7fbb9cc45}</Project>
+      <Name>EntityFramework.Project</Name>
+    </ProjectReference>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
