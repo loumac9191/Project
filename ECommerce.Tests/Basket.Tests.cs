@@ -66,7 +66,7 @@ namespace ECommerce.Tests
 
             //Act
             tBasket.AddItem(tItem);
-            int total = tBasket.CalculatePrice();
+            double total = tBasket.CalculatePrice();
 
             //Assert
             Assert.AreEqual(25, total);
@@ -84,7 +84,7 @@ namespace ECommerce.Tests
             //Act
             tBasket.AddItem(tItem);
             tBasket.AddItem(tItem2);
-            int total = tBasket.CalculatePrice();
+            double total = tBasket.CalculatePrice();
 
             //Assert
             Assert.AreEqual(50, total);

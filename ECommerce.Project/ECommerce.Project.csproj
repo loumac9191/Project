@@ -47,6 +47,7 @@
     <Compile Include="Basket.cs" />
     <Compile Include="Checkout.cs" />
     <Compile Include="Discount.cs" />
+    <Compile Include="IBuyable.cs" />
     <Compile Include="Item.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

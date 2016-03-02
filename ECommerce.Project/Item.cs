@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ECommerce.Project
 {
-    public class Item //intention is to have this as an abstract class or interface?
+    public abstract class Item : IBuyable //intention is to have this as an abstract class
     {
         //public int ItemI { get; set; }
         //want Items to be read from an external database
@@ -15,5 +15,20 @@ namespace ECommerce.Project
         public string ItemName;
         public string Description;
         public double Price;
+
+        public void BuyItem()
+        {
+            
+        }
+
+        public void TrackItem()
+        {
+            
+        }
+
+        public void ReviewItem()
+        {
+
+        }
     }
 }

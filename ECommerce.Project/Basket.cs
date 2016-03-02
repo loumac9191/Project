@@ -12,7 +12,7 @@ namespace ECommerce.Project
         //Upon instantiation, it will be given a blank list, uniqueID and a capacity for price
         private Dictionary<Item,int> basket = new Dictionary<Item,int>();
         private Guid basketID = Guid.NewGuid();
-        private int totalPrice;
+        private double totalPrice;
 
         //to do later, make sure this adds to database as well
         //check to see what is being added isnt null
@@ -23,9 +23,10 @@ namespace ECommerce.Project
 
         public void RemoveItem(string itemName)
         {
+            //recommend to have this return a string that states whether the item was removed or not
+            //string removeItemResult;
             //void 
             Item itemToRemove = basket.SingleOrDefault(i => i.Key.ItemName == itemName).Key;
-            //basket.sing
 
             //def if statement
             //if the itemToRemove is null then give a message saying that no item exists in the basket
@@ -35,10 +36,12 @@ namespace ECommerce.Project
             {
                 //need to find code for this
                 //returns a message that says that the item does not exist in the basket
+                //removeItemResult = "The item that you have tried to remove does not exist.";
             }
             else
             {
                 basket.Remove(itemToRemove);
+                //removeItemResult = "The item has been successfully removed.";
             }
         }
 
@@ -53,7 +56,7 @@ namespace ECommerce.Project
             return basketID;
         }
 
-        public int CalculatePrice()
+        public double CalculatePrice()
         {
             //if statement inside to check whether items exist
             foreach (KeyValuePair<Item, int> item in basket)
