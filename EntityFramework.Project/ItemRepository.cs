@@ -13,5 +13,9 @@ namespace EntityFramework.Project
         {
 
         }
+        public void RemoveItem(item itemToRemove)
+        {
+
+        }
     }
 }

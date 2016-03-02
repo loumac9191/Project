@@ -10,7 +10,7 @@ namespace ECommerce.Tests
     public class EntityFrameworkTests
     {
         [TestMethod]
-        public void TestMethod1()
+        public void TestBasketAddItem_CallsIItemRepositoryAddItem_WhenGivenAnItemToAdd()
         {
             //Arrange
             Mock<IItemRepository> mockIRepos = new Mock<IItemRepository>();
@@ -22,6 +22,11 @@ namespace ECommerce.Tests
 
             //Assert
             mockIRepos.Verify(r => r.AddItem(mItem.Object));
+        }
+        [TestMethod]
+        public void MyTestMethod()
+        {
+
         }
     }
 }

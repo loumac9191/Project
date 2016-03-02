@@ -9,5 +9,6 @@ namespace EntityFramework.Project
     public interface IItemRepository
     {
         void AddItem(item itemToAdd);
+        void RemoveItem(item itemToRemove);
     }
 }
