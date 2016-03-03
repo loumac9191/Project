@@ -9,8 +9,7 @@ namespace ECommerce.Project
 {
     public class Basket
     {
-        //When a basket is instantiated, it should not have any constructor
-        //Upon instantiation, it will be given a blank list, uniqueID and a capacity for price
+        //Upon instantiation, Baskets are given a blank dictionary, uniqueID and a capacity for price and IItemRepository
         private Dictionary<item,int> basket = new Dictionary<item,int>();
         private Guid basketID = Guid.NewGuid();
         private decimal totalPrice = 0m;
@@ -29,28 +28,40 @@ namespace ECommerce.Project
             basket.Add(itemToAdd,1);
         }
 
-        public void RemoveItem(string itemName)
+        public string RemoveItem(string itemName)
         {
             //recommend to have this return a string that states whether the item was removed or not
-            //string removeItemResult;
-            //void 
-            item itemToRemove = basket.SingleOrDefault(i => i.Key.name == itemName).Key;
+            string removeItemResult;
 
-            //def if statement
-            //if the itemToRemove is null then give a message saying that no item exists in the basket
-            //possibly have this check a database to see whether the itemName is contained
+            //Remove method is from the users perspective and they therefore will not need to contact
+            //the database.
 
-            if (itemToRemove == null)
+            if (basket.Count == 0)
             {
-                //need to find code for this
-                //returns a message that says that the item does not exist in the basket
-                //removeItemResult = "The item that you have tried to remove does not exist.";
+                removeItemResult = "Your Basket is currently empty, there is nothing to currently remove from your Basket.";
+                return removeItemResult;
             }
+            else if (itemName == null)
+	        {
+                removeItemResult = "You have not entered a name of an item you would like to remove.";
+                return removeItemResult;
+	        }
             else
-            {
-                basket.Remove(itemToRemove);
-                //removeItemResult = "The item has been successfully removed.";
-            }
+	        {
+                try 
+	            {	        
+		            item itemToRemove = basket.SingleOrDefault(i => i.Key.name == itemName).Key;
+                    
+                    removeItemResult = String.Format("{0} has been successfully removed.", itemName);
+                    basket.Remove(itemToRemove);
+                    return removeItemResult;                  
+	            }
+	            catch (Exception exception)
+	            {
+                    removeItemResult = String.Format("Error: {0} Inner Exception: {1}", exception.Message, exception.InnerException);
+                    return removeItemResult;
+	            }
+	        }
         }
 
         public Dictionary<item, int> GetContents()

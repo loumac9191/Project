@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace ECommerce.Project
 {
-    public interface IBuyable
-    {
-        void BuyItem();
-        void TrackItem();
-        void ReviewItem();
-    }
+    //public interface IBuyable
+    //{
+    //    void BuyItem();
+    //    void TrackItem();
+    //    void ReviewItem();
+    //}
 }

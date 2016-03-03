@@ -24,9 +24,19 @@ namespace ECommerce.Tests
             mockIRepos.Verify(r => r.AddItem(mItem.Object));
         }
         [TestMethod]
-        public void MyTestMethod()
+        public void TestBasketRemoveItem_CallsIItemRepositoryRemoveItem_WhenGivenAnItemToRemove()
         {
+            //Arrange
+            Mock<IItemRepository> mockIRepos = new Mock<IItemRepository>();
+            Mock<item> mItem = new Mock<item>();
+            mItem.Object.name = "TestingForTheSakeOfTheCode";
+            Basket basket = new Basket(mockIRepos.Object);
 
+            //Act
+            basket.RemoveItem(mItem.Object.name);
+
+            //Assert
+            mockIRepos.Verify(r => r.RemoveItem(mItem.Object));
         }
     }
 }
