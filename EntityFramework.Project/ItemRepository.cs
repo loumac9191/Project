@@ -9,7 +9,7 @@ namespace EntityFramework.Project
 {
     public class ItemRepository : IItemRepository
     {
-        public item RetrieveItemByName(string nameOfItemToAdd)
+        public virtual item RetrieveItemByName(string nameOfItemToAdd)
         {
             item itemToAdd;
 
