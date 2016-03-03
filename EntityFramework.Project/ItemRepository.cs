@@ -9,16 +9,16 @@ namespace EntityFramework.Project
 {
     public class ItemRepository : IItemRepository
     {
-        public virtual item RetrieveItemByName(string nameOfItemToAdd)
+        public virtual item RetrieveItemByName(string nameOfItemToRetrieve)
         {
-            item itemToAdd;
+            item itemToRetrieve;
 
             using (var context = new ProjectDatabaseEntities())
             {
-                itemToAdd = context.items.SingleOrDefault(x => x.name == nameOfItemToAdd);
+                itemToRetrieve = context.items.SingleOrDefault(x => x.name == nameOfItemToRetrieve);
             }
 
-            return itemToAdd;
+            return itemToRetrieve;
         }
 
         public void RemoveItem(item itemToRemove)
