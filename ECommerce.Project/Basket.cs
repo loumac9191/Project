@@ -22,11 +22,13 @@ namespace ECommerce.Project
 
         //to do later, make sure this adds to database as well
         //check to see what is being added isnt null
-        public void AddItem(item itemToAdd)
+        public void AddItem(string itemToAddByName)//item itemToAdd)
         {
-            _itemRepo.AddItem(itemToAdd);
+            item itemToAdd =_itemRepo.RetrieveItemByName(itemToAddByName);
             basket.Add(itemToAdd,1);
         }
+
+        //uncertain whether both of these will need to be given a string or an item
 
         public string RemoveItem(string itemName)
         {
