@@ -16,6 +16,11 @@ namespace ECommerce.Project
             sIRepository = itemRepo;
         }
 
+        public void CreateStock()
+        {
+            //
+        }
+
         public string StockChecker(string itemToCheck)
         {
             string checkResult;
@@ -30,6 +35,13 @@ namespace ECommerce.Project
                 checkResult = String.Format("Error: {0} Inner Exception: {1}", exception.Message, exception.InnerException);
                 return checkResult;
             }        
+        }
+
+        public string AddStock(string nameOfItem, string categoryOfItem, string itemDescriptionOfItem, decimal priceOfItem)
+        {
+            string addResult;
+            addResult = sIRepository.AddItem(nameOfItem, categoryOfItem, itemDescriptionOfItem, priceOfItem);
+            return addResult;
         }
 
         public string RemoveStock(string itemToRemoveFromStock)

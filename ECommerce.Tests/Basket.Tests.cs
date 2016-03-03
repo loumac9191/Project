@@ -10,7 +10,6 @@ namespace ECommerce.Tests
     [TestClass]
     public class BasketTests
     {
-        //doubles need to be changed to decimal
         [TestMethod]
         public void TestGetContents_ReturnsAnEmptyDictionaryWithKeyAsItemAndValueAsInt_WhenGivenNoItems()
         {

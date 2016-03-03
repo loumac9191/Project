@@ -41,6 +41,33 @@ namespace EntityFramework.Project
         //    return itemToReturn;
         //}
 
+        public string AddItem(string nameOfItem, string categoryOfItem, string itemDescriptionOfItem, decimal priceOfItem)
+        {
+            string toAddResult;
+            item itemToAdd = null;
+
+            try
+            {
+                //no item_id is given, this should be automatically generated
+                itemToAdd.name = nameOfItem;
+                itemToAdd.category = categoryOfItem;
+                itemToAdd.item_description = itemDescriptionOfItem;
+                itemToAdd.price = priceOfItem;
+
+                using (var context = new ProjectDatabaseEntities())
+                {
+                    context.items.Add(itemToAdd);
+                    context.SaveChanges();
+                }
+                toAddResult = String.Format("{0} has been added to the Database", itemToAdd.name);
+                return toAddResult;
+            }
+            catch (Exception exception)
+            {
+                throw exception;
+            }
+        }
+
         public string RemoveItem(string nameOfItemToRemove)
         {
             string toremoveResult;

@@ -10,6 +10,7 @@ namespace EntityFramework.Project
     {
         item RetrieveItemByName(string nameOfItemToAdd);
         //item testingMethod(string testString);
+        string AddItem(string nameOfItem, string categoryOfItem, string itemDescriptionOfItem, decimal priceOfItem);
         string RemoveItem(string nameOfItemToRemove);
     }
 }
