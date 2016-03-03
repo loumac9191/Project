@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.31101.0
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{3A82DA35-32E3-4C2D-86C5-B9A699F2AADE}"
 	ProjectSection(SolutionItems) = preProject
@@ -13,6 +13,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ECommerce.Tests", "ECommerce.Tests\ECommerce.Tests.csproj", "{D232A3DA-5325-4D62-826C-A73F11BB63E6}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntityFramework.Project", "EntityFramework.Project\EntityFramework.Project.csproj", "{8DD73C6A-6873-42F4-B7E8-A6B7FBB9CC45}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ECommerceUI", "ECommerceUI\ECommerceUI.csproj", "{432B5B16-DB08-45FB-8FE8-4DFCA7175FAC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -32,6 +34,10 @@ Global
 		{8DD73C6A-6873-42F4-B7E8-A6B7FBB9CC45}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8DD73C6A-6873-42F4-B7E8-A6B7FBB9CC45}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8DD73C6A-6873-42F4-B7E8-A6B7FBB9CC45}.Release|Any CPU.Build.0 = Release|Any CPU
+		{432B5B16-DB08-45FB-8FE8-4DFCA7175FAC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{432B5B16-DB08-45FB-8FE8-4DFCA7175FAC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{432B5B16-DB08-45FB-8FE8-4DFCA7175FAC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{432B5B16-DB08-45FB-8FE8-4DFCA7175FAC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
