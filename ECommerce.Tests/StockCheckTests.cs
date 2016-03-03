@@ -34,15 +34,14 @@ namespace ECommerce.Tests
             Mock<IItemRepository> iRepos = new Mock<IItemRepository>();
             item returnedItem = new item() { name = itemName, item_id = 1 };
             Stock stockCheck = new Stock(iRepos.Object);
-            string resultString = String.Format("{0} has been removed from the Database.", itemName);
 
-            iRepos.Setup(x => x.RemoveItem(It.Is<string>(s => s == itemName))).Returns(resultString);
+            iRepos.Setup(x => x.RemoveItem(It.Is<string>(s => s == itemName))).Returns(String.Format("{0} has been removed from the Database.",itemName));
             
             //Act
             string removeItemResult = stockCheck.RemoveStock(itemName);
             
             //Assert
-            Assert.AreEqual(removeItemResult, resultString);
+            Assert.AreEqual(removeItemResult, "adidas Mens Brazuca Top Replique Ball has been removed from the Database.");
         }
     }
 }

@@ -12,10 +12,18 @@ namespace EntityFramework.Project
         public virtual item RetrieveItemByName(string nameOfItemToRetrieve)
         {
             item itemToRetrieve;
-
-            using (var context = new ProjectDatabaseEntities())
+            
+            try
             {
-                itemToRetrieve = context.items.SingleOrDefault(x => x.name == nameOfItemToRetrieve);
+                using (var context = new ProjectDatabaseEntities())
+                {
+                    itemToRetrieve = context.items.SingleOrDefault(x => x.name == nameOfItemToRetrieve);
+                }
+            }
+            catch (Exception exception)
+            {
+                
+                throw exception;
             }
             return itemToRetrieve;
         }
@@ -37,13 +45,21 @@ namespace EntityFramework.Project
         {
             string toremoveResult;
             item itemToRemove;
-            using (var context = new ProjectDatabaseEntities())
+            
+            try
             {
-                itemToRemove = context.items.SingleOrDefault(x => x.name == nameOfItemToRemove);
-                context.items.Remove(itemToRemove);
-                toremoveResult = String.Format("{0} was successfully removed from the Database.", nameOfItemToRemove);
+                using (var context = new ProjectDatabaseEntities())
+                {
+                    itemToRemove = context.items.SingleOrDefault(x => x.name == nameOfItemToRemove);
+                    context.items.Remove(itemToRemove);
+                    toremoveResult = String.Format("{0} has been removed from the Database.", nameOfItemToRemove);
+                    return toremoveResult;
+                }
             }
-            return toremoveResult;
+            catch (Exception exception)
+            {
+                throw exception;
+            }
         }
     }
 }
