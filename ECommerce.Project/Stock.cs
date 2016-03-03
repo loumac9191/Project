@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace ECommerce.Project
 {
-    public class StockCheck
+    public class Stock
     {
         IItemRepository sIRepository;
         
-        public StockCheck(IItemRepository itemRepo)
+        public Stock(IItemRepository itemRepo)
         {
             sIRepository = itemRepo;
         }
@@ -29,8 +29,23 @@ namespace ECommerce.Project
             {
                 checkResult = String.Format("Error: {0} Inner Exception: {1}", exception.Message, exception.InnerException);
                 return checkResult;
-            }
-            
+            }        
         }
+
+        public string RemoveStock(string itemToRemoveFromStock)
+        {
+            string removeResult;
+            try
+            {
+                removeResult = sIRepository.RemoveItem(itemToRemoveFromStock);
+                return removeResult;
+            }
+            catch (Exception exception)
+            {   
+                throw exception;
+            }
+
+        }
+
     }
 }

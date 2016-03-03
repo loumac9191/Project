@@ -9,6 +9,7 @@ namespace EntityFramework.Project
     public interface IItemRepository
     {
         item RetrieveItemByName(string nameOfItemToAdd);
-        void RemoveItem(item itemToRemove);
+        //item testingMethod(string testString);
+        string RemoveItem(string nameOfItemToRemove);
     }
 }

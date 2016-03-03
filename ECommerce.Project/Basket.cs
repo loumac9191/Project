@@ -79,7 +79,6 @@ namespace ECommerce.Project
 
         public decimal CalculatePrice()
         {
-            //if statement inside to check whether items exist
             foreach (KeyValuePair<item, int> item in basket)
             {
                 totalPrice += (decimal)item.Key.price;

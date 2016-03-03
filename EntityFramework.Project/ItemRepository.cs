@@ -17,13 +17,33 @@ namespace EntityFramework.Project
             {
                 itemToRetrieve = context.items.SingleOrDefault(x => x.name == nameOfItemToRetrieve);
             }
-
             return itemToRetrieve;
         }
 
-        public void RemoveItem(item itemToRemove)
-        {
+        //public item testingMethod(string testString)
+        //{
+        //    item itemToReturn;
+        //    using (var context = new ProjectDatabaseEntities())
+        //    {
+        //        var query = (from i in context.items
+        //                     where i.name == testString
+        //                     select i);
+        //        itemToReturn = (item)query;                
+        //    }
+        //    return itemToReturn;
+        //}
 
+        public string RemoveItem(string nameOfItemToRemove)
+        {
+            string toremoveResult;
+            item itemToRemove;
+            using (var context = new ProjectDatabaseEntities())
+            {
+                itemToRemove = context.items.SingleOrDefault(x => x.name == nameOfItemToRemove);
+                context.items.Remove(itemToRemove);
+                toremoveResult = String.Format("{0} was successfully removed from the Database.", nameOfItemToRemove);
+            }
+            return toremoveResult;
         }
     }
 }
