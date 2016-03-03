@@ -79,6 +79,7 @@ namespace EntityFramework.Project
                 {
                     itemToRemove = context.items.SingleOrDefault(x => x.name == nameOfItemToRemove);
                     context.items.Remove(itemToRemove);
+                    context.SaveChanges();
                     toremoveResult = String.Format("{0} has been removed from the Database.", nameOfItemToRemove);
                     return toremoveResult;
                 }

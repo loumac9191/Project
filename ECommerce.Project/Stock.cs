@@ -24,6 +24,7 @@ namespace ECommerce.Project
         public string StockChecker(string itemToCheck)
         {
             string checkResult;
+
             try
             {
                 item itemToAdd = sIRepository.RetrieveItemByName(itemToCheck);

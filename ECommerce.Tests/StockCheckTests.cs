@@ -43,5 +43,16 @@ namespace ECommerce.Tests
             //Assert
             Assert.AreEqual(removeItemResult, "adidas Mens Brazuca Top Replique Ball has been removed from the Database.");
         }
+        [TestMethod]
+        public void TestAddStock_ReturnsAStringDetailingThatAnItemHasBeenAddedToTheDatabase_WhenTheItemPropertiesAreHandedToTheAddItemMethod()
+        {
+            //Arrange
+
+            //Act
+
+            //Assert
+
+
+        }
     }
 }
