@@ -63,5 +63,74 @@ namespace ECommerce.Tests
             //Assert
             Assert.AreEqual(expectedItem.name, resultItem.name);
         }
+        [TestMethod]
+        public void TestAddItem_ReturnsABasketOf3Items_WhenRetrievingAllItemsFromAMockedDatabaseOf3Items()
+        {
+            //Arrange
+            var data = new List<item>()
+            {
+                new item() { name="abc"},
+                new item() {name ="def"},
+                new item() { name="test"},
+            }.AsQueryable();
+
+            var mockSet = new Mock<DbSet<item>>();
+            mockSet.As<IQueryable<item>>().Setup(m => m.Provider).Returns(data.Provider);
+            mockSet.As<IQueryable<item>>().Setup(m => m.Expression).Returns(data.Expression);
+            mockSet.As<IQueryable<item>>().Setup(m => m.ElementType).Returns(data.ElementType);
+            mockSet.As<IQueryable<item>>().Setup(m => m.GetEnumerator()).Returns(() => data.GetEnumerator());
+
+            Mock<ProjectDatabaseEntities> mockContext = new Mock<ProjectDatabaseEntities>();
+            mockContext.Setup(c => c.items).Returns(mockSet.Object);
+
+            IItemRepository iRepository = new ItemRepository(mockContext.Object);
+
+            Basket basket = new Basket(iRepository);
+
+            //Act
+            basket.AddItem("abc");
+            basket.AddItem("def");
+            basket.AddItem("test");
+            Dictionary<item, int> resultBasket = basket.GetContents();
+
+            //Assert
+            Assert.AreEqual(mockContext.Object.items.Count(), resultBasket.Count);  
+        }
+        [TestMethod]
+        public void VerifySaveChanges_ReturnsACountOfOne_WhenInvokedViaTheRemoveItemMethod()
+        {
+            //http://stackoverflow.com/questions/21555070/entity-framework-testing-that-savechanges-is-present-and-called-in-the-correct
+            //Arrange
+
+            var data = new List<item>()
+            {
+                new item() { name="abc"},
+                new item() {name ="def"},
+                new item() { name="test"},
+            }.AsQueryable();
+
+            var data2 = new List<purchase>().AsQueryable();
+
+            var data3 = new List<user>().AsQueryable();
+
+            item itemToGo = data.ElementAt(0);
+ 
+            var mockSet = new Mock<DbSet<item>>();
+            mockSet.As<IQueryable<item>>().Setup(m => m.Provider).Returns(data.Provider);
+            mockSet.As<IQueryable<item>>().Setup(m => m.Expression).Returns(data.Expression);
+            mockSet.As<IQueryable<item>>().Setup(m => m.ElementType).Returns(data.ElementType);
+            mockSet.As<IQueryable<item>>().Setup(m => m.GetEnumerator()).Returns(() => data.GetEnumerator());
+
+            Mock<ProjectDatabaseEntities> mockContext = new Mock<ProjectDatabaseEntities>();
+            mockContext.Setup(c => c.items).Returns(mockSet.Object);
+            
+            ItemRepository iRepository = new ItemRepository(mockContext.Object);
+            
+            //Act
+            string expectedResult = iRepository.RemoveItem("abc");
+
+            //Assert
+            mockContext.Verify(x => x.SaveChanges(), Times.Once());
+        }
     }
 }

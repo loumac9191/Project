@@ -82,11 +82,11 @@ namespace EntityFramework.Project
             
             try
             {
-                using (var context = new ProjectDatabaseEntities())
+                using (_context)
                 {
-                    itemToRemove = context.items.SingleOrDefault(x => x.name == nameOfItemToRemove);
-                    context.items.Remove(itemToRemove);
-                    context.SaveChanges();
+                    itemToRemove = _context.items.SingleOrDefault(x => x.name == nameOfItemToRemove);
+                    _context.items.Remove(itemToRemove);
+                    _context.SaveChanges();
                     toremoveResult = String.Format("{0} has been removed from the Database.", nameOfItemToRemove);
                     return toremoveResult;
                 }
