@@ -9,7 +9,7 @@ namespace ECommerce.Project
 {
     public class Stock
     {
-        IItemRepository sIRepository;
+        private IItemRepository sIRepository;
         
         public Stock(IItemRepository itemRepo)
         {

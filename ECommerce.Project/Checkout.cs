@@ -8,8 +8,23 @@ namespace ECommerce.Project
 {
     public class Checkout
     {
-        //This is where discounts will be applied
-        //calculations based on number of items etc
-        //
+        private Basket basket;
+        private Discount discount;
+        private decimal basketTotal;
+        private decimal discountMultiplier;
+
+        public Checkout(Basket basketToCheckout, Discount discountToCheckout)
+        {
+            basket = basketToCheckout;
+            discount = discountToCheckout;
+            basketTotal = basket.CalculatePrice();
+        }
+
+        public decimal Discounter(string discountCodeInputFromUser)
+        {
+            discountMultiplier = discount.CurrentDiscountOffers(discountCodeInputFromUser);
+            basketTotal = (basketTotal * discountMultiplier);
+            return basketTotal;
+        }
     }
 }
