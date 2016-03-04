@@ -9,15 +9,22 @@ namespace EntityFramework.Project
 {
     public class ItemRepository : IItemRepository
     {
+        private ProjectDatabaseEntities _context;
+
+        public ItemRepository(ProjectDatabaseEntities context)
+        {
+            _context = context;
+        }
+
         public virtual item RetrieveItemByName(string nameOfItemToRetrieve)
         {
             item itemToRetrieve;
             
             try
             {
-                using (var context = new ProjectDatabaseEntities())
+                using (_context)
                 {
-                    itemToRetrieve = context.items.SingleOrDefault(x => x.name == nameOfItemToRetrieve);
+                    itemToRetrieve = _context.items.SingleOrDefault(x => x.name == nameOfItemToRetrieve);
                 }
             }
             catch (Exception exception)
@@ -41,7 +48,7 @@ namespace EntityFramework.Project
         //    return itemToReturn;
         //}
 
-        public string AddItem(string nameOfItem, string categoryOfItem, string itemDescriptionOfItem, decimal priceOfItem)
+        public virtual string AddItem(string nameOfItem, string categoryOfItem, string itemDescriptionOfItem, decimal priceOfItem)
         {
             string toAddResult;
             item itemToAdd = null;
@@ -68,7 +75,7 @@ namespace EntityFramework.Project
             }
         }
 
-        public string RemoveItem(string nameOfItemToRemove)
+        public virtual string RemoveItem(string nameOfItemToRemove)
         {
             string toremoveResult;
             item itemToRemove;

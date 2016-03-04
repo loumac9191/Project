@@ -13,8 +13,10 @@ namespace ECommerce.Tests
         public void TestStockChecker_ReturnsAStringDetailingWhetherAnItemIsInStock_WhenOneItemIsPassedInToTheStockCheckerMethod()
         {
             //Arrange
+            var mockSet = new Mock<ProjectDatabaseEntities>();
+
             string itemName = "adidas Mens Brazuca Top Replique Ball";
-            Mock<IItemRepository> iRepos = new Mock<IItemRepository>();
+            Mock<ItemRepository> iRepos = new Mock<ItemRepository>(mockSet.Object);
             item returnedItem = new item() { name = itemName, item_id = 1 };
             Stock stockCheck = new Stock(iRepos.Object);
 
@@ -30,29 +32,40 @@ namespace ECommerce.Tests
         public void TestRemoveStock_ReturnsAStringDetailingThatAnItemInTheDatabaseHasBeenRemoved_WhenGivenTheNameOfThatItem()
         {
             //Arrange
+            var mockSet = new Mock<ProjectDatabaseEntities>();
+
             string itemName = "adidas Mens Brazuca Top Replique Ball";
-            Mock<IItemRepository> iRepos = new Mock<IItemRepository>();
+            Mock<ItemRepository> iRepos = new Mock<ItemRepository>(mockSet.Object);
             item returnedItem = new item() { name = itemName, item_id = 1 };
             Stock stockCheck = new Stock(iRepos.Object);
 
-            iRepos.Setup(x => x.RemoveItem(It.Is<string>(s => s == itemName))).Returns(String.Format("{0} has been removed from the Database.",itemName));
-            
+            iRepos.Setup(x => x.RemoveItem(It.Is<string>(s => s == itemName))).Returns(String.Format("{0} has been removed from the Database.", itemName));
+
             //Act
             string removeItemResult = stockCheck.RemoveStock(itemName);
-            
+
             //Assert
             Assert.AreEqual(removeItemResult, "adidas Mens Brazuca Top Replique Ball has been removed from the Database.");
-        }
-        [TestMethod]
-        public void TestAddStock_ReturnsAStringDetailingThatAnItemHasBeenAddedToTheDatabase_WhenTheItemPropertiesAreHandedToTheAddItemMethod()
-        {
-            //Arrange
-
-            //Act
-
-            //Assert
-
 
         }
+        //[TestMethod]
+        //public void TestAddStock_ReturnsAStringDetailingThatAnItemHasBeenAddedToTheDatabase_WhenTheItemPropertiesAreHandedToTheAddItemMethod()
+        //{
+        ////    //Arrange
+            
+            
+        ////    string itemName = "adidas Mens Brazuca Top Replique Ball";
+        ////    Mock<IItemRepository> iRepos = new Mock<IItemRepository>();
+        ////    item returnedItem = new item() { name = itemName, item_id = 1 };
+        ////    Stock stockCheck = new Stock(iRepos.Object);
+
+        ////    iRepos.Setup(x => x.RemoveItem(It.Is<string>(s => s == itemName))).Returns(String.Format("{0} has been removed from the Database.", itemName));
+            
+        ////    //Act
+
+        ////    //Assert
+
+
+        //}
     }
 }
