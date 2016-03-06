@@ -96,5 +96,15 @@ namespace EntityFramework.Project
                 throw exception;
             }
         }
+
+        //public virtual string LoginViaEntityFramework(string userName, string passWord)
+        //{
+
+        //}
+
+        //public virtual string RegisterNewUser(string firstName, string lastName, string userName, string passWord)
+        //{
+
+        //}
     }
 }
