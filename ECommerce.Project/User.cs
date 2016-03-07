@@ -14,11 +14,30 @@ namespace ECommerce.Project
         public User(IItemRepository iRepos)
         {
             iRepository = iRepos;
+            user currentUser = null;
         }
 
-        public void Login(string userName, string passWord)
+        public string Login(string userName, string passWord)
         {
-            iRepository.LoginViaEntityFramework(userName, passWord);
+            try
+            {
+                //try to create a user, then if it is null, then dont give that 
+                //if the passwords null then.
+
+                currentUser = iRepository.LoginViaEntityFramework(userName, passWord);
+                
+                if (true)
+                {
+
+                }
+            }
+            catch (Exception)
+            {
+                
+                throw;
+            }
+
+            user = iRepository.LoginViaEntityFramework(userName, passWord);
         }
 
         public void Register(string firstName, string lastName, string userName, string passWord)

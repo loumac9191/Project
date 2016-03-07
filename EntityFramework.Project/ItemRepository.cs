@@ -96,7 +96,7 @@ namespace EntityFramework.Project
             }
         }
 
-        public virtual string LoginViaEntityFramework(string userName, string passWord)
+        public virtual user LoginViaEntityFramework(string userName, string passWord)
         {
             string usernameToAdd;
             string passWordToAdd;
@@ -105,19 +105,25 @@ namespace EntityFramework.Project
             {
                 using (_context)
                 {
-                    IEnumerable<user> matchedUsers = _context.users.Where(u => u.username == userName);
-                    if (matchedUsers.Count() > 0)
+                    user userToLogIn = _context.users.SingleOrDefault(x => x.username == userName);
+
+                    if (userToLogIn.user_password == passWord)
                     {
-                        IEnumerable<user> passwordMatch = matchedUsers.Where(u => u.user_password == passWord);
-                        if (passwordMatch.Count() > 0)
-                        {
-                            //LOGGED IN!
-                        }
+                        return userToLogIn;
                     }
-
-                    //currentUse = _context.users.SingleOrDefault(x => x.user_password == passWord);
-
-
+                    else
+                	{
+                        return null;
+                	}
+                    //IEnumerable<user> matchedUsers = _context.users.Where(u => u.username == userName);
+                    //if (matchedUsers.Count() > 0)
+                    //{
+                    //    IEnumerable<user> passwordMatch = matchedUsers.Where(u => u.user_password == passWord);
+                    //    if (passwordMatch.Count() > 0)
+                    //    {
+                    //        //LOGGED IN!
+                    //    }
+                    //}
                 }
             }
             catch (Exception)
@@ -125,7 +131,6 @@ namespace EntityFramework.Project
                 
                 throw;
             }
-            return "something";
         }
 
         public virtual string RegisterNewUser(string firstName, string lastName, string userName, string passWord)
