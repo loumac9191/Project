@@ -12,7 +12,7 @@ namespace EntityFramework.Project
         //item testingMethod(string testString);
         string AddItem(string nameOfItem, string categoryOfItem, string itemDescriptionOfItem, decimal priceOfItem);
         string RemoveItem(string nameOfItemToRemove);
-        //string RegisterNewUser(string firstName, string lastName, string userName, string passWord);
-        //string LoginViaEntityFramework(string userName, string passWord);
+        string RegisterNewUser(string firstName, string lastName, string userName, string passWord);
+        string LoginViaEntityFramework(string userName, string passWord);
     }
 }

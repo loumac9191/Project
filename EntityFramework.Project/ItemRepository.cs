@@ -28,8 +28,7 @@ namespace EntityFramework.Project
                 }
             }
             catch (Exception exception)
-            {
-                
+            {                
                 throw exception;
             }
             return itemToRetrieve;
@@ -97,14 +96,41 @@ namespace EntityFramework.Project
             }
         }
 
-        //public virtual string LoginViaEntityFramework(string userName, string passWord)
-        //{
+        public virtual string LoginViaEntityFramework(string userName, string passWord)
+        {
+            string usernameToAdd;
+            string passWordToAdd;
 
-        //}
+            try
+            {
+                using (_context)
+                {
+                    IEnumerable<user> matchedUsers = _context.users.Where(u => u.username == userName);
+                    if (matchedUsers.Count() > 0)
+                    {
+                        IEnumerable<user> passwordMatch = matchedUsers.Where(u => u.user_password == passWord);
+                        if (passwordMatch.Count() > 0)
+                        {
+                            //LOGGED IN!
+                        }
+                    }
 
-        //public virtual string RegisterNewUser(string firstName, string lastName, string userName, string passWord)
-        //{
+                    //currentUse = _context.users.SingleOrDefault(x => x.user_password == passWord);
 
-        //}
+
+                }
+            }
+            catch (Exception)
+            {
+                
+                throw;
+            }
+            return "something";
+        }
+
+        public virtual string RegisterNewUser(string firstName, string lastName, string userName, string passWord)
+        {
+            return "something";
+        }
     }
 }

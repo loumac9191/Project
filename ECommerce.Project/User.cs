@@ -18,12 +18,12 @@ namespace ECommerce.Project
 
         public void Login(string userName, string passWord)
         {
-            //iRepository.LoginViaEntityFramework(userName, passWord);
+            iRepository.LoginViaEntityFramework(userName, passWord);
         }
 
         public void Register(string firstName, string lastName, string userName, string passWord)
         {
-            //iRepository.RegisterNewUser(userName, passWord);
+            iRepository.RegisterNewUser(firstName, lastName, userName, passWord);
         }
     }
 }
