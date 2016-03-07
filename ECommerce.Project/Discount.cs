@@ -10,16 +10,16 @@ namespace ECommerce.Project
     {
         private decimal discountDue;
 
-        public decimal CurrentDiscountOffers(string discount)
+        public virtual decimal CurrentDiscountOffers(string discount)
         {
             if (discount == "TW3NTYFIV3")
             {
-                discountDue = .75m;
+                discountDue = 0.75m;
                 return discountDue;
             }
             else if (discount == "!F1FTY!")
             {
-                discountDue = .5m;
+                discountDue = 0.5m;
                 return discountDue;
             }
             else
