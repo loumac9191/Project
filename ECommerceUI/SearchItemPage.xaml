@@ -1,13 +1,13 @@
-﻿<Page x:Class="ECommerceUI.AddStockPage"
+﻿<Page x:Class="ECommerceUI.SearchItemPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:vm="clr-namespace:ECommerceUI.ViewModels"
+      xmlns:local="clr-namespace:ECommerceUI"
       mc:Ignorable="d" 
-      d:DesignHeight="400" d:DesignWidth="700"
-	Title="AddStockPage">
-
+      d:DesignHeight="425" d:DesignWidth="825"
+      Title="SearchItemPage">
     <Page.Resources>
         <Style x:Key="LabelFontStyle" TargetType="Label">
             <Setter Property="FontFamily" Value="Microsoft NeoGothic"/>
@@ -78,8 +78,8 @@
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
                     <Rectangle Grid.Row="0" Fill="#373737"/>
-                    <Label Grid.Row="0" Content="item to add" Style="{StaticResource ResourceKey=LabelSubHeaderFontStyle}"/>
-                    <Grid Grid.Row="1" Background="#9C9393">
+                    <Label Grid.Row="0" Content="item to search for" Style="{StaticResource ResourceKey=LabelSubHeaderFontStyle}"/>
+                    <Grid Grid.Row="1" Background="#9C9393" VerticalAlignment="Center">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="auto"/>
                             <ColumnDefinition Width="*" />
@@ -87,17 +87,9 @@
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto" />
                             <RowDefinition Height="Auto" />
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition Height="Auto" />
                         </Grid.RowDefinitions>
                         <Label Grid.Column="0" Grid.Row="0" Style="{StaticResource TableLabelFontStyle}">Name:</Label>
                         <TextBox Grid.Column="1" Grid.Row="0" Margin="3,3,3,3"/>
-                        <Label Grid.Row="1" Grid.Column="0" Style="{StaticResource TableLabelFontStyle}">Category</Label>
-                        <TextBox Grid.Row="1" Grid.Column="1" Margin="3,3,3,3" />
-                        <Label Grid.Column="0" Grid.Row="2" Style="{StaticResource TableLabelFontStyle}">Price per Unit</Label>
-                        <TextBox Grid.Column="1" Grid.Row="2" Margin="3,3,3,3"/>
-                        <Label Grid.Row="3" Grid.Column="0" Style="{StaticResource TableLabelFontStyle}">Description:</Label>
-                        <TextBox Grid.Row="3" Grid.Column="1" Margin="3,3,3,3" AcceptsReturn="True"/>
                     </Grid>
                 </Grid>
                 <Grid Grid.Column="2">
@@ -106,7 +98,7 @@
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
                     <Rectangle Grid.Row="0" Fill="#373737"/>
-                    <Label Grid.Row="0" Content="further information" Style="{StaticResource ResourceKey=LabelSubHeaderFontStyle}"/>
+                    <Label Grid.Row="0" Content="database information" Style="{StaticResource ResourceKey=LabelSubHeaderFontStyle}"/>
                     <Grid Grid.Row="1" Background="#9C9393">
                     </Grid>
                 </Grid>
@@ -125,6 +117,6 @@
                 <Button Content="Remove Item" Grid.Row="2" Margin="2,1,2,1"/>
             </Grid>
         </Grid>
-        
     </Grid>
 </Page>
+

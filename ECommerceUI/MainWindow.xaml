@@ -12,5 +12,5 @@
         <vm:BaseViewModel/>
     </Window.DataContext>
     
-    <Frame Source="AddStockPage.xaml"/>
+    <Frame Source="LoginPage.xaml"/>
 </Window>
