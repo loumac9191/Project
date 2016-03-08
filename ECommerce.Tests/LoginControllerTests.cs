@@ -89,7 +89,7 @@ namespace ECommerce.Tests
             iRepo.Verify(x => x.RegisterNewUser(firstName, lastName, userName, userPassword), Times.Once);
         }
         [TestMethod]
-        public void TestRegister_ReturnsAContext()
+        public void VerifySaveChanges_ReturnsACountOfOne_WhenInvokedViaLoginControllerRegisterMethod()
         {
             //Arrange
             string firstName = "Bob";
@@ -103,8 +103,6 @@ namespace ECommerce.Tests
                 new user() { username ="chrisBird", user_password="312" },
                 new user() { username="samGerrett", user_password="321" },
             }.AsQueryable();
-
-            //item itemToGo = data.ElementAt(0);
  
             var mockSet = new Mock<DbSet<user>>();
             mockSet.As<IQueryable<user>>().Setup(m => m.Provider).Returns(data.Provider);
@@ -115,15 +113,14 @@ namespace ECommerce.Tests
             Mock<ProjectDatabaseEntities> mockContext = new Mock<ProjectDatabaseEntities>();
             mockContext.Setup(c => c.users).Returns(mockSet.Object);
             
-            Mock<ItemRepository> iRepository = new Mock<ItemRepository>(mockContext.Object);
-            LoginController loginController = new LoginController(iRepository.Object);
+            ItemRepository iRepository = new ItemRepository(mockContext.Object);
+            LoginController loginController = new LoginController(iRepository);
             
             //Act
             string expectedResult = loginController.Register(firstName, lastName, userName, passWord);
 
             //Assert
             mockContext.Verify(x => x.SaveChanges(), Times.Once());
-
         }
     }
 }

@@ -122,11 +122,12 @@ namespace EntityFramework.Project
 
         public virtual string RegisterNewUser(string firstName, string lastName, string userName, string passWord)
         {
-            user newUser = null;
+            
             string returnString;
 
             try
             {
+                user newUser = new user();
                 newUser.username = userName;
                 newUser.user_password = passWord;
                 using (_context)
