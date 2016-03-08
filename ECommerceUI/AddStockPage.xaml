@@ -16,6 +16,20 @@
             <Setter Property="HorizontalAlignment" Value="Center"/>
             <Setter Property="VerticalAlignment" Value="Center"/>
         </Style>
+        <Style x:Key="LabelSubHeaderFontStyle" TargetType="Label">
+            <Setter Property="FontFamily" Value="Microsoft NeoGothic"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
+        <Style x:Key="TableLabelFontStyle" TargetType="Label">
+            <Setter Property="FontFamily" Value="Microsoft NeoGothic"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
         <Style x:Key="TextBlockFontStyle" TargetType="TextBlock">
             <Setter Property="FontFamily" Value="Microsoft NeoGothic"/>
             <Setter Property="FontSize" Value="24"/>
@@ -23,9 +37,14 @@
             <Setter Property="HorizontalAlignment" Value="Center"/>
             <Setter Property="VerticalAlignment" Value="Center"/>
         </Style>
+        <Style TargetType="{x:Type Button}">
+            <Setter Property="Background" Value="#373737" />
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="FontSize" Value="15" />
+        </Style>
     </Page.Resources>
 
-    <Grid>
+    <Grid Background="White">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="120"/>
             <ColumnDefinition Width="*"/>
@@ -34,46 +53,78 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="50"/>
+            <RowDefinition Height="25"/>
         </Grid.RowDefinitions>
+        <Rectangle Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Fill="#232323"/>
+        <Button Grid.Row="2" Grid.Column="2" Content="Log Out"/>
 
         <Rectangle Grid.RowSpan="3" Grid.Column="0" Fill="#232323"/>
         <Label Grid.Row="0" Grid.Column="0" Content="Options" Style="{StaticResource ResourceKey=LabelFontStyle}"/>
-        <Rectangle Grid.Column="1" Grid.ColumnSpan="2" Fill="#2fbeee"/>
+        <Rectangle Grid.Column="1" Grid.ColumnSpan="2" Fill="#fe9400" StrokeThickness=".5" Stroke="#232323"/>
         <TextBlock Grid.Column="1" Grid.ColumnSpan="2" Style="{StaticResource ResourceKey=TextBlockFontStyle}">ECOMMERCE - STOCK APP</TextBlock>
 
-        <Grid Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Background="#8ce2ff">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto" />
-                <ColumnDefinition Width="200" />
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-            </Grid.RowDefinitions>
-            <Label Grid.Column="0" Grid.Row="0">Item Name:</Label>
-            <TextBox Grid.Column="1" Grid.Row="0" Margin="3,3,3,3"/>
-            <Label Grid.Row="1" Grid.Column="0">Item Category</Label>
-            <TextBox Grid.Row="1" Grid.Column="1" Margin="3,3,3,3" />
-            <Label Grid.Column="0" Grid.Row="2">Price per Unit</Label>
-            <TextBox Grid.Column="1" Grid.Row="2" Margin="3,3,3,3"/>
-            <Label Grid.Row="3" Grid.Column="0">Item Description:</Label>
-            <TextBox Grid.Row="3" Grid.Column="1" Margin="3,3,3,3" AcceptsReturn="True"/>
+
+        <Grid Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="1">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="1"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Rectangle Grid.Column="1" Fill="#414040"/>
+                <Grid Grid.Column="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Rectangle Grid.Row="0" Fill="#373737"/>
+                    <Label Grid.Row="0" Content="item to add" Style="{StaticResource ResourceKey=LabelSubHeaderFontStyle}"/>
+                    <Grid Grid.Row="1" Background="#9C9393">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Label Grid.Column="0" Grid.Row="0" Style="{StaticResource TableLabelFontStyle}">Name:</Label>
+                        <TextBox Grid.Column="1" Grid.Row="0" Margin="3,3,3,3"/>
+                        <Label Grid.Row="1" Grid.Column="0" Style="{StaticResource TableLabelFontStyle}">Category</Label>
+                        <TextBox Grid.Row="1" Grid.Column="1" Margin="3,3,3,3" />
+                        <Label Grid.Column="0" Grid.Row="2" Style="{StaticResource TableLabelFontStyle}">Price per Unit</Label>
+                        <TextBox Grid.Column="1" Grid.Row="2" Margin="3,3,3,3"/>
+                        <Label Grid.Row="3" Grid.Column="0" Style="{StaticResource TableLabelFontStyle}">Description:</Label>
+                        <TextBox Grid.Row="3" Grid.Column="1" Margin="3,3,3,3" AcceptsReturn="True"/>
+                    </Grid>
+                </Grid>
+                <Grid Grid.Column="2">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Rectangle Grid.Row="0" Fill="#373737"/>
+                    <Label Grid.Row="0" Content="further information" Style="{StaticResource ResourceKey=LabelSubHeaderFontStyle}"/>
+                    <Grid Grid.Row="1" Background="#9C9393">
+                    </Grid>
+                </Grid>
+            </Grid>
         </Grid>
 
-        <Grid Grid.Row="1" Grid.Column="0">
+        <Grid Grid.Row="1" Grid.RowSpan="2" Grid.Column="0">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
-                <Button Content="Search for Item" Grid.Row="0" Margin="2,0,2,0"/>
-                <Button Content="Add Item" Grid.Row="1" Margin="2,0,2,0"/>
-                <Button Content="Remove Item" Grid.Row="2" Margin="2,0,2,0"/>
+                <Button Content="Search for Item" Grid.Row="0" Margin="2,1,2,1"/>
+                <Button Content="Add Item" Grid.Row="1" Margin="2,1,2,1"/>
+                <Button Content="Remove Item" Grid.Row="2" Margin="2,1,2,1"/>
             </Grid>
         </Grid>
+        
     </Grid>
 </Page>
