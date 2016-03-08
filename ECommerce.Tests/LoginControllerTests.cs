@@ -67,5 +67,63 @@ namespace ECommerce.Tests
             Assert.AreEqual(userToGet, loggedInUser);
             Assert.AreEqual(expectedString, loggedInUserString);
         }
+        [TestMethod]
+        public void TestRegisterNewUser_IsCalled_WhenRegisterMethodIsCalled()
+        {
+            //Arrange
+            string userName = "testName";
+            string userPassword = "passWord";
+            string firstName = "Bob";
+            string lastName = "Smith";
+            string returnedString = "";
+
+            Mock<ProjectDatabaseEntities> mockContext = new Mock<ProjectDatabaseEntities>();
+            Mock<ItemRepository> iRepo = new Mock<ItemRepository>(mockContext.Object);
+            iRepo.Setup(d => d.RegisterNewUser(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>())).Returns(returnedString);
+            LoginController loginController = new LoginController(iRepo.Object);
+
+            //Act
+            loginController.Register(firstName, lastName, userName, userPassword);
+
+            //Assert
+            iRepo.Verify(x => x.RegisterNewUser(firstName, lastName, userName, userPassword), Times.Once);
+        }
+        [TestMethod]
+        public void TestRegister_ReturnsAContext()
+        {
+            //Arrange
+            string firstName = "Bob";
+            string lastName = "Smith";
+            string userName = "bobSmith2";
+            string passWord = "1234";
+
+            var data = new List<user>()
+            {
+                new user() { username="bobSmith", user_password="123"},
+                new user() { username ="chrisBird", user_password="312" },
+                new user() { username="samGerrett", user_password="321" },
+            }.AsQueryable();
+
+            //item itemToGo = data.ElementAt(0);
+ 
+            var mockSet = new Mock<DbSet<user>>();
+            mockSet.As<IQueryable<user>>().Setup(m => m.Provider).Returns(data.Provider);
+            mockSet.As<IQueryable<user>>().Setup(m => m.Expression).Returns(data.Expression);
+            mockSet.As<IQueryable<user>>().Setup(m => m.ElementType).Returns(data.ElementType);
+            mockSet.As<IQueryable<user>>().Setup(m => m.GetEnumerator()).Returns(() => data.GetEnumerator());
+
+            Mock<ProjectDatabaseEntities> mockContext = new Mock<ProjectDatabaseEntities>();
+            mockContext.Setup(c => c.users).Returns(mockSet.Object);
+            
+            Mock<ItemRepository> iRepository = new Mock<ItemRepository>(mockContext.Object);
+            LoginController loginController = new LoginController(iRepository.Object);
+            
+            //Act
+            string expectedResult = loginController.Register(firstName, lastName, userName, passWord);
+
+            //Assert
+            mockContext.Verify(x => x.SaveChanges(), Times.Once());
+
+        }
     }
 }

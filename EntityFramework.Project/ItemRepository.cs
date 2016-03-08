@@ -134,6 +134,7 @@ namespace EntityFramework.Project
                     if (_context.users.Count(x => x.username == newUser.username) < 1)
                     {
                         _context.users.Add(newUser);
+                        _context.SaveChanges();
                         returnString = String.Format("{0} has been added to the database", userName);
                         return returnString;
                     }
