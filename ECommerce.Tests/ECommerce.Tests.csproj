@@ -68,6 +68,7 @@
     <Compile Include="EntityFrameworkTests.cs" />
     <Compile Include="StockCheckTests.cs" />
     <Compile Include="CheckoutTests.cs" />
+    <Compile Include="LoginControllerTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ECommerce.Project\ECommerce.Project.csproj">

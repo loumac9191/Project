@@ -98,9 +98,6 @@ namespace EntityFramework.Project
 
         public virtual user LoginViaEntityFramework(string userName, string passWord)
         {
-            string usernameToAdd;
-            string passWordToAdd;
-
             try
             {
                 using (_context)
@@ -115,27 +112,43 @@ namespace EntityFramework.Project
                 	{
                         return null;
                 	}
-                    //IEnumerable<user> matchedUsers = _context.users.Where(u => u.username == userName);
-                    //if (matchedUsers.Count() > 0)
-                    //{
-                    //    IEnumerable<user> passwordMatch = matchedUsers.Where(u => u.user_password == passWord);
-                    //    if (passwordMatch.Count() > 0)
-                    //    {
-                    //        //LOGGED IN!
-                    //    }
-                    //}
                 }
             }
             catch (Exception)
             {
-                
                 throw;
             }
         }
 
         public virtual string RegisterNewUser(string firstName, string lastName, string userName, string passWord)
         {
-            return "something";
+            user newUser = null;
+            string returnString;
+
+            try
+            {
+                newUser.username = userName;
+                newUser.user_password = passWord;
+                using (_context)
+                {
+                    if (_context.users.Count(x => x.username == newUser.username) < 1)
+                    {
+                        _context.users.Add(newUser);
+                        returnString = String.Format("{0} has been added to the database", userName);
+                        return returnString;
+                    }
+                    else
+                    {
+                        returnString = String.Format("{0} already exists on the database", userName);
+                        return returnString;
+                    }
+                }
+            }
+            catch (Exception exception)
+            {
+                returnString = String.Format("The following exception was thrown: {0}",exception.Message);
+                return returnString;
+            }
         }
     }
 }

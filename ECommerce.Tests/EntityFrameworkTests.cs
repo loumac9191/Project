@@ -104,14 +104,10 @@ namespace ECommerce.Tests
 
             var data = new List<item>()
             {
-                new item() { name="abc"},
-                new item() {name ="def"},
-                new item() { name="test"},
+                new item() { name="abc" },
+                new item() { name ="def" },
+                new item() { name="test" },
             }.AsQueryable();
-
-            var data2 = new List<purchase>().AsQueryable();
-
-            var data3 = new List<user>().AsQueryable();
 
             item itemToGo = data.ElementAt(0);
  

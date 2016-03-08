@@ -13,6 +13,6 @@ namespace EntityFramework.Project
         string AddItem(string nameOfItem, string categoryOfItem, string itemDescriptionOfItem, decimal priceOfItem);
         string RemoveItem(string nameOfItemToRemove);
         string RegisterNewUser(string firstName, string lastName, string userName, string passWord);
-        string LoginViaEntityFramework(string userName, string passWord);
+        user LoginViaEntityFramework(string userName, string passWord);
     }
 }

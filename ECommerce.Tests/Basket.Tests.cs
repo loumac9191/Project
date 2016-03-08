@@ -17,8 +17,6 @@ namespace ECommerce.Tests
         {
             //Arrange
             var mockSet = new Mock<ProjectDatabaseEntities>();
-
-
             Dictionary<item, int> tDictionary = new Dictionary<item, int>();
             ItemRepository iRepository = new ItemRepository(mockSet.Object);
             Basket basket = new Basket(iRepository);
@@ -28,7 +26,6 @@ namespace ECommerce.Tests
 
             //Assert
             Assert.AreEqual(testBasket.Values.Count, tDictionary.Values.Count);
-
         }
         [TestMethod]
         public void TestAddItem_ReturnsADictionaryOfOneItemWithOneCount_WhenGivenOneItem()
