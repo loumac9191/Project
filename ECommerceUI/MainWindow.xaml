@@ -4,20 +4,13 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ECommerceUI"
+        xmlns:vm="clr-namespace:ECommerceUI.ViewModels"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="auto" />
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition MinWidth="50" />
-            <ColumnDefinition Width="Auto" />
-            <ColumnDefinition Width="*" />
-        </Grid.ColumnDefinitions>
-        <TextBlock Text="Test Text" Grid.Row="0" Grid.Column="0" />
-        <TextBox x:Name="txtName" Grid.Row="0" Grid.Column="1" MinWidth="50"/>
-        <Button Content="Click Me" Grid.Row="0" Grid.Column="2" Click="Button_Click"/>
-
-    </Grid>
+        Title="MainWindow" Height="400" Width="700">
+    
+    <Window.DataContext>
+        <vm:BaseViewModel/>
+    </Window.DataContext>
+    
+    <Frame Source="AddStockPage.xaml"/>
 </Window>
