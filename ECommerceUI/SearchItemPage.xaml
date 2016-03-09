@@ -74,7 +74,7 @@
                 <Rectangle Grid.Column="1" Fill="#414040"/>
                 <Grid Grid.Column="0">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="auto"/>
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
                     <Rectangle Grid.Row="0" Fill="#373737"/>
@@ -94,7 +94,7 @@
                 </Grid>
                 <Grid Grid.Column="2">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="auto"/>
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
                     <Rectangle Grid.Row="0" Fill="#373737"/>

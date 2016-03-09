@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:vm="clr-namespace:ECommerceUI.ViewModels"
       mc:Ignorable="d" 
-      d:DesignHeight="400" d:DesignWidth="700"
+      d:DesignHeight="425" d:DesignWidth="825"
 	Title="AddStockPage">
 
     <Page.Resources>
@@ -74,7 +74,7 @@
                 <Rectangle Grid.Column="1" Fill="#414040"/>
                 <Grid Grid.Column="0">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="auto"/>
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
                     <Rectangle Grid.Row="0" Fill="#373737"/>
@@ -102,7 +102,7 @@
                 </Grid>
                 <Grid Grid.Column="2">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="auto"/>
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
                     <Rectangle Grid.Row="0" Fill="#373737"/>

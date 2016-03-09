@@ -67,7 +67,7 @@
         <Grid Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2">
             <Grid>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="32.4"/>
+                    <RowDefinition Height="auto"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
                 <Rectangle Grid.Row="0" Fill="#373737"/>
