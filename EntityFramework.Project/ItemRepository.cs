@@ -64,10 +64,10 @@ namespace EntityFramework.Project
                 itemToAdd.item_description = itemDescriptionOfItem;
                 itemToAdd.price = priceOfItem;
 
-                using (var context = new ProjectDatabaseEntities())
+                using (_context)
                 {
-                    context.items.Add(itemToAdd);
-                    context.SaveChanges();
+                    _context.items.Add(itemToAdd);
+                    _context.SaveChanges();
                 }
                 toAddResult = String.Format("{0} has been added to the Database", itemToAdd.name);
                 return toAddResult;
