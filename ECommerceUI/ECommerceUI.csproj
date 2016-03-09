@@ -69,6 +69,9 @@
     <Compile Include="RegisterPage.xaml.cs">
       <DependentUpon>RegisterPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="RemoveStockPage.xaml.cs">
+      <DependentUpon>RemoveStockPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="SearchItemPage.xaml.cs">
       <DependentUpon>SearchItemPage.xaml</DependentUpon>
     </Compile>
@@ -77,6 +80,7 @@
     <Compile Include="ViewModels\LoginPageViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\RegisterPageViewModel.cs" />
+    <Compile Include="ViewModels\RemoveItemPageViewModel.cs" />
     <Compile Include="ViewModels\SearchPageViewModel.cs" />
     <Page Include="AddStockPage.xaml">
       <SubType>Designer</SubType>
@@ -99,6 +103,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="RegisterPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="RemoveStockPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
