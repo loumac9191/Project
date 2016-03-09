@@ -126,8 +126,7 @@ namespace EntityFramework.Project
         }
 
         public virtual string RegisterNewUser(string firstName, string lastName, string userName, string passWord)
-        {
-            
+        {           
             string returnString;
 
             try

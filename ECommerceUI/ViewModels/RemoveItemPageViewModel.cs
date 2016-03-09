@@ -54,8 +54,23 @@ namespace ECommerceUI.ViewModels
             }
             set { _removeItem = value; }
         }
+        
+        private ICommand _logout;
 
-                public void SearchFor()
+        public ICommand logout
+        {
+            get
+            {
+                if (_logout == null)
+                {
+                    _logout = new Command(Logout, CanLogout);
+                }
+                return _logout;
+            }
+            set { _logout = value; }
+        }
+
+        public void SearchFor()
         {
             MainViewModel vm = App.Current.MainWindow.DataContext as MainViewModel;
             vm.page = "SearchItemPage.xaml";
@@ -91,6 +106,17 @@ namespace ECommerceUI.ViewModels
         //{
         //    ((Command)registerDetails).RaiseCanExecuteChanged();
         //}
+
+        public void Logout()
+        {
+            MainViewModel vm = App.Current.MainWindow.DataContext as MainViewModel;
+            vm.page = "LoginPage.xaml";
+        }
+
+        public bool CanLogout()
+        {
+            return true;
+        }
 
         private LoginController _loginController;
 

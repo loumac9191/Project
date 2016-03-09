@@ -89,7 +89,7 @@ namespace ECommerceUI.ViewModels
             }
             else
             {
-                
+                //Message Box?
             }           
         }
 

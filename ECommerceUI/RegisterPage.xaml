@@ -94,13 +94,13 @@
                         <Rectangle Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Fill="#7413d9"/>
                         <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Content="register details" Style="{StaticResource TableLabelFontStyle}"/>
                         <Label Grid.Row="1" Grid.Column="0" Content="username:" Style="{StaticResource TableLabelFontStyle}"/>
-                        <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding username}"/>
+                        <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding username}" VerticalContentAlignment="Center"/>
                         <Label Grid.Row="2" Grid.Column="0" Content="password:" Style="{StaticResource TableLabelFontStyle}"/>
-                        <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding password}"/>
+                        <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding password}" VerticalContentAlignment="Center"/>
                         <Label Grid.Row="3" Grid.Column="0" Content="first name:" Style="{StaticResource TableLabelFontStyle}"/>
-                        <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding firstname}"/>
+                        <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding firstname}" VerticalContentAlignment="Center"/>
                         <Label Grid.Row="4" Grid.Column="0" Content="last name:" Style="{StaticResource TableLabelFontStyle}"/>
-                        <TextBox Grid.Row="4" Grid.Column="1" Text="{Binding lastname}"/>
+                        <TextBox Grid.Row="4" Grid.Column="1" Text="{Binding lastname}" VerticalContentAlignment="Center"/>
                         <Button Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" Content="register" Command="{Binding registerDetails}"/>
                     </Grid>
                 </Grid>

@@ -92,9 +92,9 @@
                         <Rectangle Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Fill="#7413d9"/>
                         <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Content="login details" Style="{StaticResource TableLabelFontStyle}"/>
                         <Label Grid.Row="1" Grid.Column="0" Content="username:" Style="{StaticResource TableLabelFontStyle}"/>
-                        <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding username, Mode=TwoWay}"/>
+                        <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding username, Mode=TwoWay}" VerticalContentAlignment="Center"/>
                         <Label Grid.Row="2" Grid.Column="0" Content="password:" Style="{StaticResource TableLabelFontStyle}"/>
-                        <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding password, Mode=TwoWay}"/>
+                        <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding password, Mode=TwoWay}" VerticalContentAlignment="Center"/>
                         <Button Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Content="login" Command="{Binding loginDetails,Mode=TwoWay}"/>
                     </Grid>
                 </Grid>

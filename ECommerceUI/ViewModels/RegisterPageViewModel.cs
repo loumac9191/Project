@@ -107,7 +107,17 @@ namespace ECommerceUI.ViewModels
 
         public void Register()
         {
-            _loginController.Register(firstname, lastname, username, password);
+            string result = _loginController.Register(firstname, lastname, username, password);
+
+            if (result == String.Format("{0} has been added to the database", username))
+            {
+                MainViewModel vm = App.Current.MainWindow.DataContext as MainViewModel;
+                vm.page = "SearchItemPage.xaml";
+            }
+            else
+            {
+                //Message Box?
+            } 
         }
 
         public bool CanRegister()
