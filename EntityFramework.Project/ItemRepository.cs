@@ -11,6 +11,11 @@ namespace EntityFramework.Project
     {
         private ProjectDatabaseEntities _context;
 
+        public ItemRepository()
+        {
+            _context = new ProjectDatabaseEntities();
+        }
+
         public ItemRepository(ProjectDatabaseEntities context)
         {
             _context = context;

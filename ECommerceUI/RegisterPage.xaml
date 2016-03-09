@@ -3,11 +3,15 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:vm="clr-namespace:ECommerceUI.ViewModels"
       xmlns:local="clr-namespace:ECommerceUI"
       mc:Ignorable="d" 
       d:DesignHeight="425" d:DesignWidth="825"
       Title="RegisterPage">
 
+    <Page.DataContext>
+        <vm:RegisterPageViewModel/>
+    </Page.DataContext>
     <Page.Resources>
         <Style x:Key="LabelFontStyle" TargetType="Label">
             <Setter Property="FontFamily" Value="Microsoft NeoGothic"/>
@@ -56,7 +60,7 @@
             <RowDefinition Height="25"/>
         </Grid.RowDefinitions>
         <Rectangle Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Fill="#232323"/>
-        <Button Grid.Row="2" Grid.Column="2" Content="Login"/>
+        <Button Grid.Row="2" Grid.Column="2" Content="Login" Command="{Binding toLoginPage}"/>
 
         <Rectangle Grid.RowSpan="3" Grid.Column="0" Fill="#232323"/>
         <Label Grid.Row="0" Grid.Column="0" Content="Options" Style="{StaticResource ResourceKey=LabelFontStyle}"/>
@@ -90,14 +94,14 @@
                         <Rectangle Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Fill="#7413d9"/>
                         <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Content="register details" Style="{StaticResource TableLabelFontStyle}"/>
                         <Label Grid.Row="1" Grid.Column="0" Content="username:" Style="{StaticResource TableLabelFontStyle}"/>
-                        <TextBox Grid.Row="1" Grid.Column="1"/>
+                        <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding username}"/>
                         <Label Grid.Row="2" Grid.Column="0" Content="password:" Style="{StaticResource TableLabelFontStyle}"/>
-                        <TextBox Grid.Row="2" Grid.Column="1"/>
+                        <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding password}"/>
                         <Label Grid.Row="3" Grid.Column="0" Content="first name:" Style="{StaticResource TableLabelFontStyle}"/>
-                        <TextBox Grid.Row="3" Grid.Column="1"/>
+                        <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding firstname}"/>
                         <Label Grid.Row="4" Grid.Column="0" Content="last name:" Style="{StaticResource TableLabelFontStyle}"/>
-                        <TextBox Grid.Row="4" Grid.Column="1"/>
-                        <Button Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" Content="register"/>
+                        <TextBox Grid.Row="4" Grid.Column="1" Text="{Binding lastname}"/>
+                        <Button Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" Content="register" Command="{Binding registerDetails}"/>
                     </Grid>
                 </Grid>
             </Grid>

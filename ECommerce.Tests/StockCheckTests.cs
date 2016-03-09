@@ -51,20 +51,6 @@ namespace ECommerce.Tests
         //[TestMethod]
         //public void TestAddStock_ReturnsAStringDetailingThatAnItemHasBeenAddedToTheDatabase_WhenTheItemPropertiesAreHandedToTheAddItemMethod()
         //{
-        ////    //Arrange
-            
-            
-        ////    string itemName = "adidas Mens Brazuca Top Replique Ball";
-        ////    Mock<IItemRepository> iRepos = new Mock<IItemRepository>();
-        ////    item returnedItem = new item() { name = itemName, item_id = 1 };
-        ////    Stock stockCheck = new Stock(iRepos.Object);
-
-        ////    iRepos.Setup(x => x.RemoveItem(It.Is<string>(s => s == itemName))).Returns(String.Format("{0} has been removed from the Database.", itemName));
-            
-        ////    //Act
-
-        ////    //Assert
-
 
         //}
     }

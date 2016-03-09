@@ -7,7 +7,10 @@
       mc:Ignorable="d" 
       d:DesignHeight="425" d:DesignWidth="825"
 	Title="AddStockPage">
-
+    
+    <Page.DataContext>
+        <vm:AddItemPageViewModel/>
+    </Page.DataContext>
     <Page.Resources>
         <Style x:Key="LabelFontStyle" TargetType="Label">
             <Setter Property="FontFamily" Value="Microsoft NeoGothic"/>
@@ -120,9 +123,9 @@
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
-                <Button Content="Search for Item" Grid.Row="0" Margin="2,1,2,1"/>
-                <Button Content="Add Item" Grid.Row="1" Margin="2,1,2,1"/>
-                <Button Content="Remove Item" Grid.Row="2" Margin="2,1,2,1"/>
+                <Button Content="Search for Item" Grid.Row="0" Margin="2,1,2,1" Command="{Binding searchFor}"/>
+                <Button Content="Add Item" Grid.Row="1" Margin="2,1,2,1" Command="{Binding addItem}"/>
+                <Button Content="Remove Item" Grid.Row="2" Margin="2,1,2,1" Command="{Binding removeItem}"/>
             </Grid>
         </Grid>
         

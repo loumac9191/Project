@@ -11,6 +11,11 @@ namespace ECommerce.Project
     {
         private IItemRepository iRepository;
 
+        public LoginController()
+        {
+            iRepository = new ItemRepository();
+        }
+
         public LoginController(IItemRepository iRepos)
         {
             iRepository = iRepos;

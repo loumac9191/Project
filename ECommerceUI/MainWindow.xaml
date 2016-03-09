@@ -9,8 +9,8 @@
         Title="MainWindow" Height="425" Width="825">
     
     <Window.DataContext>
-        <vm:BaseViewModel/>
+        <vm:MainViewModel/>
     </Window.DataContext>
-    
-    <Frame Source="LoginPage.xaml"/>
+
+    <Frame Source="{Binding page}" NavigationUIVisibility="Hidden"/>
 </Window>
