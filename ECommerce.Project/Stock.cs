@@ -10,15 +10,34 @@ namespace ECommerce.Project
     public class Stock
     {
         private IItemRepository sIRepository;
+
+        public Stock()
+        {
+            sIRepository = new ItemRepository();
+        }
         
         public Stock(IItemRepository itemRepo)
         {
             sIRepository = itemRepo;
         }
 
-        public void CreateStock()
+        //public void CreateStock()
+        //{
+        //    //
+        //}
+
+        //untested
+        public item StockRetriever(string itemToCheck)
         {
-            //
+            try
+            {
+                item itemToCheckFromStock = sIRepository.RetrieveItemByName(itemToCheck);
+                return itemToCheckFromStock;
+            }
+            catch (Exception)
+            {                
+                throw;
+            }
         }
 
         public string StockChecker(string itemToCheck)

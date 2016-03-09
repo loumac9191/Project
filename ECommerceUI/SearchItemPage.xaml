@@ -41,6 +41,13 @@
             <Setter Property="HorizontalAlignment" Value="Center"/>
             <Setter Property="VerticalAlignment" Value="Center"/>
         </Style>
+        <Style x:Key="TextBlockResultStyle" TargetType="TextBlock">
+            <Setter Property="FontFamily" Value="Microsoft NeoGothic"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>        
         <Style TargetType="{x:Type Button}">
             <Setter Property="Background" Value="#373737" />
             <Setter Property="Foreground" Value="White" />
@@ -91,8 +98,9 @@
                             <RowDefinition Height="Auto" />
                             <RowDefinition Height="Auto" />
                         </Grid.RowDefinitions>
-                        <Label Grid.Column="0" Grid.Row="0" Style="{StaticResource TableLabelFontStyle}">Name:</Label>
-                        <TextBox Grid.Column="1" Grid.Row="0" Margin="3,3,3,3" VerticalContentAlignment="Center"/>
+                        <Label Background="#232323" Grid.Column="0" Grid.Row="0" Style="{StaticResource TableLabelFontStyle}">Name:</Label>
+                        <TextBox Grid.Column="1" Grid.Row="0" Margin="3,3,3,3" VerticalContentAlignment="Center" Text="{Binding itemSearched, Mode=TwoWay}"/>
+                        <Button Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="1" Content="Search" Command="{Binding searchForItem}"/>
                     </Grid>
                 </Grid>
                 <Grid Grid.Column="2">
@@ -103,6 +111,34 @@
                     <Rectangle Grid.Row="0" Fill="#373737"/>
                     <Label Grid.Row="0" Content="database information" Style="{StaticResource ResourceKey=LabelSubHeaderFontStyle}"/>
                     <Grid Grid.Row="1" Background="#9C9393">
+                        <Grid VerticalAlignment="Center">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Rectangle Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Fill="#7413d9"/>
+                            <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Content="stock details from items table" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                            <Rectangle Grid.Row="1" Grid.Column="1" Grid.RowSpan="5" Fill="#373737"/>
+                            <Rectangle Grid.Row="1" Grid.Column="0" Grid.RowSpan="5" Fill="#232323"/>
+                            <Label Grid.Column="0" Grid.Row="1" Style="{StaticResource TableLabelFontStyle}">Item ID:</Label>
+                            <TextBlock Grid.Column="1" Grid.Row="1" Margin="3,3,3,3" Text="TEST" Style="{StaticResource TextBlockResultStyle}"/>
+                            <Label Grid.Column="0" Grid.Row="2" Style="{StaticResource TableLabelFontStyle}">Name:</Label>
+                            <TextBlock Grid.Column="1" Grid.Row="2" Margin="3,3,3,3" Text="{Binding itemName}" Style="{StaticResource TextBlockResultStyle}"/>
+                            <Label Grid.Column="0" Grid.Row="3" Style="{StaticResource TableLabelFontStyle}">Category:</Label>
+                            <TextBlock Grid.Column="1" Grid.Row="3" Margin="3,3,3,3" Text="{Binding itemCategory}" Style="{StaticResource TextBlockResultStyle}"/>
+                            <Label Grid.Column="0" Grid.Row="4" Style="{StaticResource TableLabelFontStyle}">Price:</Label>
+                            <TextBlock Grid.Column="1" Grid.Row="4" Margin="3,3,3,3" Text="{Binding itemPrice}" Style="{StaticResource TextBlockResultStyle}"/>
+                            <Label Grid.Column="0" Grid.Row="5" Style="{StaticResource TableLabelFontStyle}"># In Stock:</Label>
+                            <TextBlock Grid.Column="1" Grid.Row="5" Margin="3,3,3,3" Text="TEST" Style="{StaticResource TextBlockResultStyle}"/>
+                        </Grid>
                     </Grid>
                 </Grid>
             </Grid>

@@ -112,7 +112,7 @@ namespace ECommerceUI.ViewModels
             if (result == String.Format("{0} has been added to the database", username))
             {
                 MainViewModel vm = App.Current.MainWindow.DataContext as MainViewModel;
-                vm.page = "SearchItemPage.xaml";
+                vm.page = "LoginPage.xaml";
             }
             else
             {

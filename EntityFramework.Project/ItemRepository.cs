@@ -24,19 +24,18 @@ namespace EntityFramework.Project
         public virtual item RetrieveItemByName(string nameOfItemToRetrieve)
         {
             item itemToRetrieve;
-            
+
             try
             {
-                using (_context)
-                {
-                    itemToRetrieve = _context.items.SingleOrDefault(x => x.name == nameOfItemToRetrieve);
-                }
+                //this used to have a using statement
+                itemToRetrieve = _context.items.SingleOrDefault(x => x.name == nameOfItemToRetrieve);
+                return itemToRetrieve;
             }
             catch (Exception exception)
-            {                
+            {
                 throw exception;
             }
-            return itemToRetrieve;
+            //return itemToRetrieve;
         }
 
         //public item testingMethod(string testString)
@@ -83,7 +82,7 @@ namespace EntityFramework.Project
         {
             string toremoveResult;
             item itemToRemove;
-            
+
             try
             {
                 using (_context)
@@ -114,9 +113,9 @@ namespace EntityFramework.Project
                         return userToLogIn;
                     }
                     else
-                	{
+                    {
                         return null;
-                	}
+                    }
                 }
             }
             catch (Exception)
@@ -126,7 +125,7 @@ namespace EntityFramework.Project
         }
 
         public virtual string RegisterNewUser(string firstName, string lastName, string userName, string passWord)
-        {           
+        {
             string returnString;
 
             try
@@ -152,7 +151,7 @@ namespace EntityFramework.Project
             }
             catch (Exception exception)
             {
-                returnString = String.Format("The following exception was thrown: {0}",exception.Message);
+                returnString = String.Format("The following exception was thrown: {0}", exception.Message);
                 return returnString;
             }
         }

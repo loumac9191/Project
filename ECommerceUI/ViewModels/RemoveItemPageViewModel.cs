@@ -8,7 +8,7 @@ using System.Windows.Input;
 
 namespace ECommerceUI.ViewModels
 {
-    public class RemoveItemPageViewModel
+    public class RemoveItemPageViewModel : BaseViewModel
     {
         private ICommand _searchFor;
 

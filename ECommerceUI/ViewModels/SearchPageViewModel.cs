@@ -5,10 +5,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using EntityFramework.Project;
 
 namespace ECommerceUI.ViewModels
 {
-    public class SearchPageViewModel
+    public class SearchPageViewModel : BaseViewModel
     {
         private ICommand _searchFor;
 
@@ -69,7 +70,80 @@ namespace ECommerceUI.ViewModels
             }
             set { _logout = value; }
         }
+
+        private ICommand _searchForItem;
+
+        public ICommand searchForItem
+        {
+            get 
+            {
+                if (_searchForItem == null)
+                {
+                    _searchForItem = new Command(GetItem, CanGetItem);
+                }
+                return _searchForItem; 
+            }
+            set { _searchForItem = value; }
+        }
         
+
+        private string _itemName;
+
+        public string itemName
+        {
+            get { return _itemName; }
+            set 
+            { 
+                _itemName = value;
+                OnPropertyChanged("itemName");
+            }
+        }
+
+        private string _itemCategory;
+
+        public string itemCategory
+        {
+            get { return _itemCategory; }
+            set 
+            { 
+                _itemCategory = value;
+                OnPropertyChanged("itemCategory");
+            }
+        }
+
+        private string _itemPrice;
+
+        public string itemPrice
+        {
+            get { return _itemPrice; }
+            set 
+            { 
+                _itemPrice = value;
+                OnPropertyChanged("itemPrice");
+            }
+        }
+        
+
+        private string _itemSearched;
+
+        public string itemSearched
+        {
+            get { return _itemSearched; }
+            set { _itemSearched = value; }
+        }
+
+        public void GetItem()
+        {
+           item retrievedItem = _stockChecker.StockRetriever(itemSearched);
+           itemName = retrievedItem.name;
+           itemCategory = retrievedItem.category;
+           itemPrice = retrievedItem.price.ToString();
+        }
+
+        public bool CanGetItem()
+        {
+            return true;
+        }
         
         public void SearchFor()
         {
@@ -81,11 +155,11 @@ namespace ECommerceUI.ViewModels
             return true;
         }
 
-        private LoginController _loginController;
+        private Stock _stockChecker;
 
         public SearchPageViewModel()
         {
-            _loginController = new LoginController();
+            _stockChecker = new Stock();
         }
 
         public void AddItem()
