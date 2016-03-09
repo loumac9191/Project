@@ -84,70 +84,70 @@
         <Label Grid.Row="0" Grid.Column="0" Content="Options" Style="{StaticResource ResourceKey=LabelFontStyle}"/>
         <Rectangle Grid.Column="1" Grid.ColumnSpan="2" Fill="#fe9400" StrokeThickness=".5" Stroke="#232323"/>
         <TextBlock Grid.Column="1" Grid.ColumnSpan="2" Style="{StaticResource ResourceKey=TextBlockFontStyle}">ECOMMERCE - STOCK APP</TextBlock>
+
         <Grid Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="1">
             <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="1"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-                <Rectangle Grid.Column="1" Fill="#414040"/>
-                <Grid Grid.Column="0">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="auto"/>
-                        <RowDefinition Height="*"/>
-                    </Grid.RowDefinitions>
-                    <Rectangle Grid.Row="0" Fill="#373737"/>
-                    <Label Grid.Row="0" Content="item to search for" Style="{StaticResource ResourceKey=LabelSubHeaderFontStyle}"/>
-                    <Grid Grid.Row="1" Background="#9C9393" VerticalAlignment="Center">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Rectangle Grid.Row="0" Fill="#373737"/>
+                <Label Grid.Row="0" Content="search database for items in stock" Style="{StaticResource LabelSubHeaderFontStyle}"/>
+                <Grid Grid.Row="1">
+                    <Grid>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="auto"/>
-                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="4*"/>
+                            <ColumnDefinition Width="1*"/>
                         </Grid.ColumnDefinitions>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition Height="Auto" />
-                        </Grid.RowDefinitions>
-                        <Label Background="#232323" Grid.Column="0" Grid.Row="0" Style="{StaticResource TableLabelFontStyle}">Name:</Label>
-                        <TextBox Grid.Column="1" Grid.Row="0" Margin="3,3,3,3" VerticalContentAlignment="Center" Text="{Binding itemSearched, Mode=TwoWay}"/>
-                        <Button Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="1" Content="Search" Command="{Binding searchForItem}"/>
-                    </Grid>
-                </Grid>
-                <Grid Grid.Column="2">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="*"/>
-                    </Grid.RowDefinitions>
-                    <Rectangle Grid.Row="0" Fill="#373737"/>
-                    <Label Grid.Row="0" Content="database information" Style="{StaticResource ResourceKey=LabelSubHeaderFontStyle}"/>
-                    <Grid Grid.Row="1" Background="#9C9393">
-                        <Grid VerticalAlignment="Center">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="auto"/>
-                                <ColumnDefinition Width="*"/>
-                            </Grid.ColumnDefinitions>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="Auto"/>
-                            </Grid.RowDefinitions>
-                            <Rectangle Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Fill="#7413d9"/>
-                            <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Content="stock details from items table" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                            <Rectangle Grid.Row="1" Grid.Column="1" Grid.RowSpan="5" Fill="#373737"/>
-                            <Rectangle Grid.Row="1" Grid.Column="0" Grid.RowSpan="5" Fill="#232323"/>
-                            <Label Grid.Column="0" Grid.Row="1" Style="{StaticResource TableLabelFontStyle}">Item ID:</Label>
-                            <TextBlock Grid.Column="1" Grid.Row="1" Margin="3,3,3,3" Text="TEST" Style="{StaticResource TextBlockResultStyle}"/>
-                            <Label Grid.Column="0" Grid.Row="2" Style="{StaticResource TableLabelFontStyle}">Name:</Label>
-                            <TextBlock Grid.Column="1" Grid.Row="2" Margin="3,3,3,3" Text="{Binding itemName}" Style="{StaticResource TextBlockResultStyle}"/>
-                            <Label Grid.Column="0" Grid.Row="3" Style="{StaticResource TableLabelFontStyle}">Category:</Label>
-                            <TextBlock Grid.Column="1" Grid.Row="3" Margin="3,3,3,3" Text="{Binding itemCategory}" Style="{StaticResource TextBlockResultStyle}"/>
-                            <Label Grid.Column="0" Grid.Row="4" Style="{StaticResource TableLabelFontStyle}">Price:</Label>
-                            <TextBlock Grid.Column="1" Grid.Row="4" Margin="3,3,3,3" Text="{Binding itemPrice}" Style="{StaticResource TextBlockResultStyle}"/>
-                            <Label Grid.Column="0" Grid.Row="5" Style="{StaticResource TableLabelFontStyle}"># In Stock:</Label>
-                            <TextBlock Grid.Column="1" Grid.Row="5" Margin="3,3,3,3" Text="TEST" Style="{StaticResource TextBlockResultStyle}"/>
+                        <Grid Grid.Column="1">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="30*"/>
+                                    <RowDefinition Height="70*"/>
+                                </Grid.RowDefinitions>
+                                <Grid Grid.Row="0" VerticalAlignment="Center">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="auto"/>
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                    </Grid.RowDefinitions>
+                                    <Label Background="#373737" Margin="3,3,3,3" Grid.Column="0" Grid.Row="0" Style="{StaticResource TableLabelFontStyle}">Name:</Label>
+                                    <TextBox Grid.Column="1" Grid.Row="0" Margin="3,3,3,3" VerticalContentAlignment="Center" Text="{Binding itemSearched, Mode=TwoWay}"/>
+                                    <Button Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="1" Content="Search" Command="{Binding searchForItem}"/>
+                                </Grid>
+                                <Grid Grid.Row="1">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="auto"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                    </Grid.RowDefinitions>
+                                    <Rectangle Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Fill="#7413d9"/>
+                                    <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Content="stock details from items table" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                    <Rectangle Grid.Row="1" Grid.Column="1" Grid.RowSpan="5" Fill="White" Margin="3,3,3,3"/>
+                                    <Rectangle Grid.Row="1" Grid.Column="0" Grid.RowSpan="5" Fill="#373737" Margin="3,3,3,3"/>
+                                    <Label Grid.Column="0" Grid.Row="1" Style="{StaticResource TableLabelFontStyle}">Item ID:</Label>
+                                    <TextBlock Grid.Column="1" Grid.Row="1" Margin="3,3,3,3" Text="TEST" Style="{StaticResource TextBlockResultStyle}"/>
+                                    <Label Grid.Column="0" Grid.Row="2" Style="{StaticResource TableLabelFontStyle}">Name:</Label>
+                                    <TextBlock Grid.Column="1" Grid.Row="2" Margin="3,3,3,3" Text="{Binding itemName}" Style="{StaticResource TextBlockResultStyle}"/>
+                                    <Label Grid.Column="0" Grid.Row="3" Style="{StaticResource TableLabelFontStyle}">Category:</Label>
+                                    <TextBlock Grid.Column="1" Grid.Row="3" Margin="3,3,3,3" Text="{Binding itemCategory}" Style="{StaticResource TextBlockResultStyle}"/>
+                                    <Label Grid.Column="0" Grid.Row="4" Style="{StaticResource TableLabelFontStyle}">Price:</Label>
+                                    <TextBlock Grid.Column="1" Grid.Row="4" Margin="3,3,3,3" Text="{Binding itemPrice}" Style="{StaticResource TextBlockResultStyle}"/>
+                                    <Label Grid.Column="0" Grid.Row="5" Style="{StaticResource TableLabelFontStyle}"># In Stock:</Label>
+                                    <TextBlock Grid.Column="1" Grid.Row="5" Margin="3,3,3,3" Text="TEST" Style="{StaticResource TextBlockResultStyle}"/>
+                                </Grid>
+                            </Grid>
                         </Grid>
                     </Grid>
                 </Grid>

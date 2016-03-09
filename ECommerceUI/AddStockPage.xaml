@@ -109,20 +109,20 @@
                         <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Content="item details" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                         <Rectangle Grid.Row="1" Grid.Column="0" Fill="#373737"/>
                         <Label Grid.Column="0" Grid.Row="1" Style="{StaticResource TableLabelFontStyle}">Name:</Label>
-                        <TextBox Grid.Column="1" Grid.Row="1" Margin="3,3,3,3" VerticalContentAlignment="Center"/>
+                        <TextBox Grid.Column="1" Grid.Row="1" Margin="3,3,3,3" VerticalContentAlignment="Center" Text="{Binding itemName, Mode=TwoWay}"/>
                         <Rectangle Grid.Row="2" Grid.Column="0" Fill="#373737"/>
                         <Label Grid.Row="2" Grid.Column="0" Style="{StaticResource TableLabelFontStyle}">Category</Label>
-                        <TextBox Grid.Row="2" Grid.Column="1" Margin="3,3,3,3" VerticalContentAlignment="Center"/>
+                        <TextBox Grid.Row="2" Grid.Column="1" Margin="3,3,3,3" VerticalContentAlignment="Center" Text="{Binding itemCategory, Mode=TwoWay}"/>
                         <Rectangle Grid.Row="3" Grid.Column="0" Fill="#373737"/>
                         <Label Grid.Column="0" Grid.Row="3" Style="{StaticResource TableLabelFontStyle}">Price per Unit</Label>
-                        <TextBox Grid.Column="1" Grid.Row="3" Margin="3,3,3,3" VerticalContentAlignment="Center"/>
+                        <TextBox Grid.Column="1" Grid.Row="3" Margin="3,3,3,3" VerticalContentAlignment="Center" Text="{Binding itemPrice, Mode=TwoWay}"/>
                         <Rectangle Grid.Row="4" Grid.Column="0" Fill="#373737"/>
                         <Label Grid.Row="4" Grid.Column="0" Style="{StaticResource TableLabelFontStyle}">Quantity:</Label>
-                        <TextBox Grid.Row="4" Grid.Column="1" Margin="3,3,3,3" AcceptsReturn="True" VerticalContentAlignment="Center"/>
+                        <TextBox Grid.Row="4" Grid.Column="1" Margin="3,3,3,3" VerticalContentAlignment="Center" Text="{Binding itemPrice, Mode=TwoWay}"/>
                         <Rectangle Grid.Row="5" Grid.Column="0" Fill="#373737"/>
                         <Label Grid.Row="5" Grid.Column="0" Style="{StaticResource TableLabelFontStyle}">Description:</Label>
-                        <TextBox Grid.Row="5" Grid.Column="1" Margin="3,3,3,3" AcceptsReturn="True" VerticalContentAlignment="Center"/>
-                        <Button Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="6" Content="add item to database"/>
+                        <TextBox Grid.Row="5" Grid.Column="1" Margin="3,3,3,3" AcceptsReturn="True" VerticalContentAlignment="Center" Text="{Binding itemDescription, Mode=TwoWay}"/>
+                        <Button Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="6" Content="add item to database" Command="{Binding addItemToDatabase}"/>
                     </Grid>
                 </Grid>          
             </Grid>

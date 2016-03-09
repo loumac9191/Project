@@ -83,7 +83,7 @@
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
-                <Rectangle Grid.Row="0" Fill="#232323"/>
+                <Rectangle Grid.Row="0" Fill="#373737"/>
                 <Label Grid.Row="0" Content="login to stock checker" Style="{StaticResource LabelSubHeaderFontStyle}"/>
                 <Grid Grid.Row="1">
                     <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Height="auto" Width="300">

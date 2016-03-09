@@ -135,6 +135,7 @@ namespace ECommerceUI.ViewModels
         public void GetItem()
         {
            item retrievedItem = _stockChecker.StockRetriever(itemSearched);
+           //need to add id and quantity to this
            itemName = retrievedItem.name;
            itemCategory = retrievedItem.category;
            itemPrice = retrievedItem.price.ToString();

@@ -82,16 +82,16 @@ namespace ECommerceUI.ViewModels
             return true;
         }
 
-        private LoginController _loginController;
+        private Stock _stockController;
 
         public AddItemPageViewModel()
         {
-            _loginController = new LoginController();
+            _stockController = new Stock();
         }
 
         public void AddItem()
         {
-
+            
         }
 
         public bool CanAddItem()
@@ -125,5 +125,105 @@ namespace ECommerceUI.ViewModels
         {
             return true;
         }
+
+        //add item form, including all fields and command button
+
+        private ICommand _addItemToDatabase;
+
+        public ICommand addItemToDatabase
+        {
+            get
+            {
+                if (_addItemToDatabase == null)
+                {
+                    _addItemToDatabase = new Command(AddItemToDatabase, CanAddItemToDatabase);
+                }
+                return _addItemToDatabase;
+            }
+            set { _addItemToDatabase = value; }
+        }
+
+        public void AddItemToDatabase()
+        {
+            //string result = _stockController.AddStock(itemName, itemCategory, itemDescription, Convert.ToDecimal(itemPrice));
+
+            //if (result == String.Format("{0} has been added to the Database",itemName))
+            //{
+            //    //Something here to confirm that this was added to data
+            //    //itemName was successfully added to the database
+            //}
+            //else
+            //{
+            //    //Message Box?
+            //    //error message
+            //}
+        }
+
+        public bool CanAddItemToDatabase()
+        {
+            return true;
+        }
+
+        private string _itemName;
+
+        public string itemName
+        {
+            get { return _itemName; }
+            set
+            {
+                _itemName = value;
+                OnPropertyChanged("itemName");
+            }
+        }
+
+        private string _itemCategory;
+
+        public string itemCategory
+        {
+            get { return _itemCategory; }
+            set
+            {
+                _itemCategory = value;
+                OnPropertyChanged("itemCategory");
+            }
+        }
+
+        private string _itemPrice;
+
+        public string itemPrice
+        {
+            get { return _itemPrice; }
+            set
+            {
+                _itemPrice = value;
+                OnPropertyChanged("itemPrice");
+            }
+        }
+
+        private string _itemQuantity;
+
+        public string itemQuantity
+        {
+            get { return _itemQuantity; }
+            set
+            {
+                _itemQuantity = value;
+                OnPropertyChanged("itemQuantity");
+            }
+        }
+
+        private string _itemDescription;
+
+        public string itemDescription
+        {
+            get { return _itemDescription; }
+            set
+            {
+                _itemDescription = value;
+                OnPropertyChanged("itemDescription");
+            }
+        }
+
+
     }
 }
