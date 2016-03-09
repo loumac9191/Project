@@ -41,13 +41,25 @@
             <Setter Property="HorizontalAlignment" Value="Center"/>
             <Setter Property="VerticalAlignment" Value="Center"/>
         </Style>
-        <Style TargetType="{x:Type Button}">
-            <Setter Property="Background" Value="#373737" />
+        <Style TargetType="Button">
             <Setter Property="Foreground" Value="White" />
             <Setter Property="FontSize" Value="15" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="border" Background="#373737">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="#7413d9"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
         </Style>
     </Page.Resources>
-
     <Grid Background="#9C9393">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="120"/>
@@ -61,13 +73,10 @@
         </Grid.RowDefinitions>
         <Rectangle Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Fill="#232323"/>
         <Button Grid.Row="2" Grid.Column="2" Content="Login" Command="{Binding toLoginPage}"/>
-
         <Rectangle Grid.RowSpan="3" Grid.Column="0" Fill="#232323"/>
         <Label Grid.Row="0" Grid.Column="0" Content="Options" Style="{StaticResource ResourceKey=LabelFontStyle}"/>
         <Rectangle Grid.Column="1" Grid.ColumnSpan="2" Fill="#fe9400" StrokeThickness=".5" Stroke="#232323"/>
         <TextBlock Grid.Column="1" Grid.ColumnSpan="2" Style="{StaticResource ResourceKey=TextBlockFontStyle}">ECOMMERCE - STOCK APP</TextBlock>
-
-
         <Grid Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2">
             <Grid>
                 <Grid.RowDefinitions>
@@ -90,15 +99,18 @@
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="Auto"/>
                         </Grid.RowDefinitions>
-
                         <Rectangle Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Fill="#7413d9"/>
                         <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Content="register details" Style="{StaticResource TableLabelFontStyle}"/>
+                        <Rectangle Grid.Row="1" Grid.Column="0" Fill="#373737"/>
                         <Label Grid.Row="1" Grid.Column="0" Content="username:" Style="{StaticResource TableLabelFontStyle}"/>
                         <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding username}" VerticalContentAlignment="Center"/>
+                        <Rectangle Grid.Row="2" Grid.Column="0" Fill="#373737"/>
                         <Label Grid.Row="2" Grid.Column="0" Content="password:" Style="{StaticResource TableLabelFontStyle}"/>
                         <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding password}" VerticalContentAlignment="Center"/>
+                        <Rectangle Grid.Row="3" Grid.Column="0" Fill="#373737"/>
                         <Label Grid.Row="3" Grid.Column="0" Content="first name:" Style="{StaticResource TableLabelFontStyle}"/>
                         <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding firstname}" VerticalContentAlignment="Center"/>
+                        <Rectangle Grid.Row="4" Grid.Column="0" Fill="#373737"/>
                         <Label Grid.Row="4" Grid.Column="0" Content="last name:" Style="{StaticResource TableLabelFontStyle}"/>
                         <TextBox Grid.Row="4" Grid.Column="1" Text="{Binding lastname}" VerticalContentAlignment="Center"/>
                         <Button Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" Content="register" Command="{Binding registerDetails}"/>
@@ -106,7 +118,6 @@
                 </Grid>
             </Grid>
         </Grid>
-
         <Grid Grid.Row="1" Grid.RowSpan="2" Grid.Column="0">
             <Grid>
                 <Grid.RowDefinitions>

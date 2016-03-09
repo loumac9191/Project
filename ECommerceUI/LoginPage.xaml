@@ -44,7 +44,6 @@
         <Style TargetType="Button">
             <Setter Property="Foreground" Value="White" />
             <Setter Property="FontSize" Value="15" />
-
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
@@ -61,7 +60,6 @@
             </Setter>
         </Style>
     </Page.Resources>
-
     <Grid Background="#9C9393">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="120"/>
@@ -75,20 +73,17 @@
         </Grid.RowDefinitions>
         <Rectangle Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Fill="#232323"/>
         <Button Grid.Row="2" Grid.Column="2" Content="Register" Command="{Binding toRegisterPage}"/>
-
         <Rectangle Grid.RowSpan="3" Grid.Column="0" Fill="#232323"/>
         <Label Grid.Row="0" Grid.Column="0" Content="Options" Style="{StaticResource ResourceKey=LabelFontStyle}"/>
         <Rectangle Grid.Column="1" Grid.ColumnSpan="2" Fill="#fe9400" StrokeThickness=".5" Stroke="#232323"/>
         <TextBlock Grid.Column="1" Grid.ColumnSpan="2" Style="{StaticResource ResourceKey=TextBlockFontStyle}">ECOMMERCE - STOCK APP</TextBlock>
-
-
         <Grid Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
-                <Rectangle Grid.Row="0" Fill="#373737"/>
+                <Rectangle Grid.Row="0" Fill="#232323"/>
                 <Label Grid.Row="0" Content="login to stock checker" Style="{StaticResource LabelSubHeaderFontStyle}"/>
                 <Grid Grid.Row="1">
                     <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Height="auto" Width="300">
@@ -102,11 +97,12 @@
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="Auto"/>
                         </Grid.RowDefinitions>
-
                         <Rectangle Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Fill="#7413d9"/>
                         <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Content="login details" Style="{StaticResource TableLabelFontStyle}"/>
+                        <Rectangle Grid.Row="1" Grid.Column="0" Fill="#373737"/>
                         <Label Grid.Row="1" Grid.Column="0" Content="username:" Style="{StaticResource TableLabelFontStyle}"/>
                         <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding username, Mode=TwoWay}" VerticalContentAlignment="Center"/>
+                        <Rectangle Grid.Row="2" Grid.Column="0" Fill="#373737"/>
                         <Label Grid.Row="2" Grid.Column="0" Content="password:" Style="{StaticResource TableLabelFontStyle}"/>
                         <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding password, Mode=TwoWay}" VerticalContentAlignment="Center"/>
                         <Button Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Content="login" Command="{Binding loginDetails,Mode=TwoWay}"/>
@@ -114,7 +110,6 @@
                 </Grid>
             </Grid>
         </Grid>
-
         <Grid Grid.Row="1" Grid.RowSpan="2" Grid.Column="0">
             <Grid>
                 <Grid.RowDefinitions>
