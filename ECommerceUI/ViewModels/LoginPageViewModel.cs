@@ -21,6 +21,7 @@ namespace ECommerceUI.ViewModels
             {
                 _username = value;
                 OnPropertyChanged("username");
+                UpdateCommands();
             }
         }
 
@@ -33,6 +34,7 @@ namespace ECommerceUI.ViewModels
             {
                 _password = value;
                 OnPropertyChanged("password");
+                UpdateCommands();
             }
         }
 
@@ -78,20 +80,29 @@ namespace ECommerceUI.ViewModels
 
         public void Login()
         {
-            _loginController.Login(username, password);
+            string result = _loginController.Login(username, password);
+
+            if (result == String.Format("Welcome {0}", username))
+            {
+                MainViewModel vm = App.Current.MainWindow.DataContext as MainViewModel;
+                vm.page = "SearchItemPage.xaml";
+            }
+            else
+            {
+                
+            }           
         }
 
         public bool CanLogin()
         {
-            //if (username == null && password == null)
-            //{
-            //    return false;
-            //}
-            //else
-            //{
-            //    return true;
-            //}
-            return true;
+            if (username != null && password != null)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         public void ToRegisterPage()
@@ -103,6 +114,11 @@ namespace ECommerceUI.ViewModels
         public bool CanGoToRegisterPage()
         {
             return true;
+        }
+
+        private void UpdateCommands()
+        {
+            ((Command)loginDetails).RaiseCanExecuteChanged();
         }
     }
 }

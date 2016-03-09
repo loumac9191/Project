@@ -22,8 +22,8 @@ namespace ECommerceUI.ViewModels
 
         public MainViewModel()
         {
-            _page = "SearchItemPage.xaml";
-            //_page = "LoginPage.xaml";
+            //_page = "SearchItemPage.xaml";
+            _page = "LoginPage.xaml";
         }
     }
 }
