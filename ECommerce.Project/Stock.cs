@@ -64,6 +64,8 @@ namespace ECommerce.Project
             return addResult;
         }
 
+        //this will now need to include a number to instruct many items of stock need to be deleted
+
         public string RemoveStock(string itemToRemoveFromStock)
         {
             string removeResult;

@@ -59,7 +59,6 @@
             </Setter>
         </Style>
     </Page.Resources>
-
     <Grid Background="#9C9393">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="120"/>
@@ -127,7 +126,6 @@
                 </Grid>          
             </Grid>
         </Grid>
-
         <Grid Grid.Row="1" Grid.RowSpan="2" Grid.Column="0">
             <Grid>
                 <Grid.RowDefinitions>
