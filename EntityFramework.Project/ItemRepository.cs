@@ -35,7 +35,6 @@ namespace EntityFramework.Project
             {
                 throw exception;
             }
-            //return itemToRetrieve;
         }
 
         //public item testingMethod(string testString)

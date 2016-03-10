@@ -77,7 +77,7 @@
         <Rectangle Grid.Column="1" Grid.ColumnSpan="2" Fill="#fe9400" StrokeThickness=".5" Stroke="#232323"/>
         <TextBlock Grid.Column="1" Grid.ColumnSpan="2" Style="{StaticResource ResourceKey=TextBlockFontStyle}">ECOMMERCE - STOCK APP</TextBlock>
         <Grid Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2">
-            <Grid>
+            <Grid Margin="0,2,0,-2">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="*"/>
