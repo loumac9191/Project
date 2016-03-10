@@ -223,7 +223,5 @@ namespace ECommerceUI.ViewModels
                 OnPropertyChanged("itemDescription");
             }
         }
-
-
     }
 }

@@ -44,7 +44,7 @@
         <Style x:Key="TextBlockResultStyle" TargetType="TextBlock">
             <Setter Property="FontFamily" Value="Microsoft NeoGothic"/>
             <Setter Property="FontSize" Value="14"/>
-            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Foreground" Value="#232323"/>
             <Setter Property="HorizontalAlignment" Value="Center"/>
             <Setter Property="VerticalAlignment" Value="Center"/>
         </Style>
@@ -116,7 +116,7 @@
                                         <RowDefinition Height="Auto" />
                                     </Grid.RowDefinitions>
                                     <Label Background="#373737" Margin="3,3,3,3" Grid.Column="0" Grid.Row="0" Style="{StaticResource TableLabelFontStyle}">Name:</Label>
-                                    <TextBox Grid.Column="1" Grid.Row="0" Margin="3,3,3,3" VerticalContentAlignment="Center" Text="{Binding itemSearched, Mode=TwoWay}"/>
+                                    <TextBox Grid.Column="1" Grid.Row="0" Margin="3,3,3,3" VerticalContentAlignment="Center" AcceptsReturn="True" Text="{Binding itemSearched, Mode=TwoWay}"/>
                                     <Button Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="1" Content="Search" Command="{Binding searchForItem}"/>
                                 </Grid>
                                 <Grid Grid.Row="1">
