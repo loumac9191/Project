@@ -51,31 +51,33 @@ namespace EntityFramework.Project
         //    return itemToReturn;
         //}
 
-        public virtual string AddItem(string nameOfItem, string categoryOfItem, string itemDescriptionOfItem, decimal priceOfItem)
+        public virtual string AddItem(string nameOfItem, string categoryOfItem, string itemDescriptionOfItem, decimal priceOfItem, int quantityOfItemToAdd)
         {
             string toAddResult;
             item itemToAdd = null;
 
-            try
-            {
-                //no item_id is given, this should be automatically generated
-                itemToAdd.name = nameOfItem;
+            itemToAdd.name = nameOfItem;
+
+            if (_context.items.SingleOrDefault(i => i.name == itemToAdd.name) == null)
+	        {            
                 itemToAdd.category = categoryOfItem;
                 itemToAdd.item_description = itemDescriptionOfItem;
                 itemToAdd.price = priceOfItem;
-
-                using (_context)
-                {
-                    _context.items.Add(itemToAdd);
-                    _context.SaveChanges();
-                }
+                //itemToAdd.quantityOfItem = quantityOfItemToAdd;
+                _context.items.Add(itemToAdd);
+                _context.SaveChanges();
                 toAddResult = String.Format("{0} has been added to the Database", itemToAdd.name);
                 return toAddResult;
-            }
-            catch (Exception exception)
-            {
-                throw exception;
-            }
+                
+	        }
+            else
+	        {                
+                int totalOfItem = Convert.ToInt32(_context.items.SingleOrDefault(i => i.name == itemToAdd.name).quantityOfItem += quantityOfItemToAdd);
+                _context.items.SingleOrDefault(i => i.name == itemToAdd.name).quantityOfItem += quantityOfItemToAdd;
+                _context.SaveChanges();
+                toAddResult = String.Format("There are now a total of {0} of {1} in stock", totalOfItem, nameOfItem);
+                return toAddResult;
+	        }
         }
 
         public virtual string RemoveItem(string nameOfItemToRemove)
@@ -133,6 +135,8 @@ namespace EntityFramework.Project
                 user newUser = new user();
                 newUser.username = userName;
                 newUser.user_password = passWord;
+                newUser.firstName = firstName;
+                newUser.lastName = lastName;
                 using (_context)
                 {
                     if (_context.users.Count(x => x.username == newUser.username) < 1)

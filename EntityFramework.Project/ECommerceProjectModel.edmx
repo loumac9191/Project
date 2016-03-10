@@ -14,6 +14,7 @@
           <Property Name="category" Type="varchar" MaxLength="80" />
           <Property Name="item_description" Type="varchar" MaxLength="750" />
           <Property Name="price" Type="decimal" Precision="20" Scale="2" />
+          <Property Name="quantityOfItem" Type="int" />
         </EntityType>
         <EntityType Name="purchases">
           <Key>
@@ -30,6 +31,8 @@
           <Property Name="userid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="username" Type="varchar" MaxLength="120" />
           <Property Name="user_password" Type="varchar" MaxLength="120" />
+          <Property Name="firstName" Type="varchar" MaxLength="120" />
+          <Property Name="lastName" Type="varchar" MaxLength="120" />
         </EntityType>
         <Association Name="fk_purchase_itemid">
           <End Role="items" Type="Self.items" Multiplicity="0..1" />
@@ -66,6 +69,7 @@
           <Property Name="item_description" Type="String" MaxLength="750" FixedLength="false" Unicode="false" />
           <Property Name="price" Type="Decimal" Precision="20" Scale="2" />
           <NavigationProperty Name="purchases" Relationship="Self.fk_purchase_itemid" FromRole="items" ToRole="purchases" />
+          <Property Name="quantityOfItem" Type="Int32" />
         </EntityType>
         <EntityType Name="purchase">
           <Key>
@@ -83,6 +87,8 @@
           <Property Name="userid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="username" Type="String" MaxLength="120" FixedLength="false" Unicode="false" />
           <Property Name="user_password" Type="String" MaxLength="120" FixedLength="false" Unicode="false" />
+          <Property Name="firstName" Type="String" MaxLength="120" FixedLength="false" Unicode="false" />
+          <Property Name="lastName" Type="String" MaxLength="120" FixedLength="false" Unicode="false" />
         </EntityType>
         <Association Name="fk_purchase_itemid">
           <End Role="items" Type="Self.item" Multiplicity="0..1" />
@@ -114,6 +120,7 @@
           <EntitySetMapping Name="items">
             <EntityTypeMapping TypeName="ProjectDatabaseModel.item">
               <MappingFragment StoreEntitySet="items">
+                <ScalarProperty Name="quantityOfItem" ColumnName="quantityOfItem" />
                 <ScalarProperty Name="item_id" ColumnName="item_id" />
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="category" ColumnName="category" />
@@ -134,6 +141,8 @@
           <EntitySetMapping Name="users">
             <EntityTypeMapping TypeName="ProjectDatabaseModel.user">
               <MappingFragment StoreEntitySet="users">
+                <ScalarProperty Name="lastName" ColumnName="lastName" />
+                <ScalarProperty Name="firstName" ColumnName="firstName" />
                 <ScalarProperty Name="userid" ColumnName="userid" />
                 <ScalarProperty Name="username" ColumnName="username" />
                 <ScalarProperty Name="user_password" ColumnName="user_password" />

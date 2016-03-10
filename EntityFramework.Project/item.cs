@@ -24,6 +24,7 @@ namespace EntityFramework.Project
         public string category { get; set; }
         public string item_description { get; set; }
         public Nullable<decimal> price { get; set; }
+        public Nullable<int> quantityOfItem { get; set; }
     
         public virtual ICollection<purchase> purchases { get; set; }
     }

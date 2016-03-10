@@ -17,5 +17,7 @@ namespace EntityFramework.Project
         public int userid { get; set; }
         public string username { get; set; }
         public string user_password { get; set; }
+        public string firstName { get; set; }
+        public string lastName { get; set; }
     }
 }
