@@ -137,7 +137,7 @@
                                     <Rectangle Grid.Row="1" Grid.Column="1" Grid.RowSpan="5" Fill="White" Margin="3,3,3,3"/>
                                     <Rectangle Grid.Row="1" Grid.Column="0" Grid.RowSpan="5" Fill="#373737" Margin="3,3,3,3"/>
                                     <Label Grid.Column="0" Grid.Row="1" Style="{StaticResource TableLabelFontStyle}">Item ID:</Label>
-                                    <TextBlock Grid.Column="1" Grid.Row="1" Margin="3,3,3,3" Text="TEST" Style="{StaticResource TextBlockResultStyle}"/>
+                                    <TextBlock Grid.Column="1" Grid.Row="1" Margin="3,3,3,3" Text="{Binding itemID}" Style="{StaticResource TextBlockResultStyle}"/>
                                     <Label Grid.Column="0" Grid.Row="2" Style="{StaticResource TableLabelFontStyle}">Name:</Label>
                                     <TextBlock Grid.Column="1" Grid.Row="2" Margin="3,3,3,3" Text="{Binding itemName}" Style="{StaticResource TextBlockResultStyle}"/>
                                     <Label Grid.Column="0" Grid.Row="3" Style="{StaticResource TableLabelFontStyle}">Category:</Label>
@@ -145,7 +145,7 @@
                                     <Label Grid.Column="0" Grid.Row="4" Style="{StaticResource TableLabelFontStyle}">Price:</Label>
                                     <TextBlock Grid.Column="1" Grid.Row="4" Margin="3,3,3,3" Text="{Binding itemPrice}" Style="{StaticResource TextBlockResultStyle}"/>
                                     <Label Grid.Column="0" Grid.Row="5" Style="{StaticResource TableLabelFontStyle}"># In Stock:</Label>
-                                    <TextBlock Grid.Column="1" Grid.Row="5" Margin="3,3,3,3" Text="TEST" Style="{StaticResource TextBlockResultStyle}"/>
+                                    <TextBlock Grid.Column="1" Grid.Row="5" Margin="3,3,3,3" Text="{Binding itemStockTotal}" Style="{StaticResource TextBlockResultStyle}"/>
                                 </Grid>
                             </Grid>
                         </Grid>

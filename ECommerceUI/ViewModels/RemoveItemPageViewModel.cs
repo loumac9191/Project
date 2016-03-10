@@ -102,10 +102,10 @@ namespace ECommerceUI.ViewModels
             return true;
         }
 
-        //private void UpdateCommands()
-        //{
-        //    ((Command)registerDetails).RaiseCanExecuteChanged();
-        //}
+        private void UpdateCommands()
+        {
+            ((Command)itemToRemoveFromDatabase).RaiseCanExecuteChanged();
+        }
 
         public void Logout()
         {
@@ -118,26 +118,14 @@ namespace ECommerceUI.ViewModels
             return true;
         }
 
-        private LoginController _loginController;
+        private Stock _stockController;
 
         public RemoveItemPageViewModel()
         {
-            _loginController = new LoginController();
+            _stockController = new Stock();
         }
 
         //all textboxs
-
-        private string _itemID;
-
-        public string itemID
-        {
-            get { return _itemID; }
-            set 
-            {
-                _itemID = value;
-                OnPropertyChanged("itemID");
-            }
-        }      
 
         private string _itemName;
 
@@ -148,18 +136,7 @@ namespace ECommerceUI.ViewModels
             {
                 _itemName = value;
                 OnPropertyChanged("itemName");
-            }
-        }
-
-        private string _itemPrice;
-
-        public string itemPrice
-        {
-            get { return _itemPrice; }
-            set
-            {
-                _itemPrice = value;
-                OnPropertyChanged("itemPrice");
+                UpdateCommands();
             }
         }
 
@@ -172,6 +149,7 @@ namespace ECommerceUI.ViewModels
             {
                 _itemQuantity = value;
                 OnPropertyChanged("itemQuantity");
+                UpdateCommands();
             }
         }
 
@@ -193,7 +171,9 @@ namespace ECommerceUI.ViewModels
         public void RemoveItemFromDatabase()
         {
 
-            //string result = _stockController.RemoveStock(itemName, itemQuantity);
+            string result = _stockController.RemoveStock(itemName, Convert.ToInt32(itemQuantity));
+            itemName = "";
+            itemQuantity = "";
 
             //if (result == String.Format("{0} has been removed from the Database.", itemName))
             //{
@@ -209,7 +189,7 @@ namespace ECommerceUI.ViewModels
 
         public bool CanRemoveItemFromDatabase()
         {
-            if (itemID != null && itemName != null && itemPrice != null && itemQuantity != null)
+            if (itemName != null && itemQuantity != null)
             {
                 return true;
             }

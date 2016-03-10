@@ -85,6 +85,18 @@ namespace ECommerceUI.ViewModels
             }
             set { _searchForItem = value; }
         }
+
+        private string _itemID;
+
+        public string itemID
+        {
+            get { return _itemID; }
+            set 
+            {
+                _itemID = value;
+                OnPropertyChanged("itemID");
+            }
+        }
         
 
         private string _itemName;
@@ -122,6 +134,18 @@ namespace ECommerceUI.ViewModels
                 OnPropertyChanged("itemPrice");
             }
         }
+
+        private string _itemStockTotal;
+
+        public string itemStockTotal
+        {
+            get { return _itemStockTotal; }
+            set 
+            {
+                _itemStockTotal = value;
+                OnPropertyChanged("itemStockTotal");
+            }
+        }
         
 
         private string _itemSearched;
@@ -136,10 +160,12 @@ namespace ECommerceUI.ViewModels
         {
            item retrievedItem = _stockChecker.StockRetriever(itemSearched);
            //need to add id and quantity to this
-
+           
+           itemID = retrievedItem.item_id.ToString(); 
            itemName = retrievedItem.name;
            itemCategory = retrievedItem.category;
            itemPrice = retrievedItem.price.ToString();
+           itemStockTotal = retrievedItem.quantityOfItem.ToString(); 
 
         }
 

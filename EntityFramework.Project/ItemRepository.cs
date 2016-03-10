@@ -54,7 +54,7 @@ namespace EntityFramework.Project
         public virtual string AddItem(string nameOfItem, string categoryOfItem, string itemDescriptionOfItem, decimal priceOfItem, int quantityOfItemToAdd)
         {
             string toAddResult;
-            item itemToAdd = null;
+            item itemToAdd = new item();
 
             itemToAdd.name = nameOfItem;
 
@@ -63,7 +63,7 @@ namespace EntityFramework.Project
                 itemToAdd.category = categoryOfItem;
                 itemToAdd.item_description = itemDescriptionOfItem;
                 itemToAdd.price = priceOfItem;
-                //itemToAdd.quantityOfItem = quantityOfItemToAdd;
+                itemToAdd.quantityOfItem = quantityOfItemToAdd;
                 _context.items.Add(itemToAdd);
                 _context.SaveChanges();
                 toAddResult = String.Format("{0} has been added to the Database", itemToAdd.name);
@@ -72,33 +72,44 @@ namespace EntityFramework.Project
 	        }
             else
 	        {                
-                int totalOfItem = Convert.ToInt32(_context.items.SingleOrDefault(i => i.name == itemToAdd.name).quantityOfItem += quantityOfItemToAdd);
+                int totalOfItem = Convert.ToInt32(_context.items.SingleOrDefault(i => i.name == nameOfItem).quantityOfItem);
+                
                 _context.items.SingleOrDefault(i => i.name == itemToAdd.name).quantityOfItem += quantityOfItemToAdd;
                 _context.SaveChanges();
-                toAddResult = String.Format("There are now a total of {0} of {1} in stock", totalOfItem, nameOfItem);
+                toAddResult = String.Format("There are now a total of {0} of {1} in stock", (totalOfItem+quantityOfItemToAdd), nameOfItem);
                 return toAddResult;
 	        }
         }
 
-        public virtual string RemoveItem(string nameOfItemToRemove)
+        public virtual string RemoveItem(string nameOfItemToRemove,int quantityToRemove)
         {
             string toremoveResult;
             item itemToRemove;
 
-            try
+            if (_context.items.SingleOrDefault(x => x.name == nameOfItemToRemove) != null)
             {
-                using (_context)
+                int totalInDb = Convert.ToInt32(_context.items.SingleOrDefault(x => x.name == nameOfItemToRemove).quantityOfItem);
+                
+                if (totalInDb == quantityToRemove)
                 {
                     itemToRemove = _context.items.SingleOrDefault(x => x.name == nameOfItemToRemove);
                     _context.items.Remove(itemToRemove);
                     _context.SaveChanges();
-                    toremoveResult = String.Format("{0} has been removed from the Database.", nameOfItemToRemove);
+                    toremoveResult = String.Format("{0} has been removed from the database", nameOfItemToRemove);
+                    return toremoveResult;
+                }
+                else
+                {
+                    _context.items.SingleOrDefault(x => x.name == nameOfItemToRemove).quantityOfItem -= quantityToRemove;
+                    _context.SaveChanges();
+                    toremoveResult = String.Format("There are now a total of {0} of {1} in stock",(totalInDb-quantityToRemove),nameOfItemToRemove);
                     return toremoveResult;
                 }
             }
-            catch (Exception exception)
+            else
             {
-                throw exception;
+                toremoveResult = String.Format("{0} could not be removed as this does not exist within the database", nameOfItemToRemove);
+                return toremoveResult;
             }
         }
 

@@ -145,17 +145,31 @@ namespace ECommerceUI.ViewModels
 
         public void AddItemToDatabase()
         {
-            //string result = _stockController.AddStock(itemName, itemCategory, itemDescription, Convert.ToDecimal(itemPrice));
+            string result = _stockController.AddStock(itemName,itemCategory,itemDescription, Convert.ToDecimal(itemPrice),Convert.ToInt32(itemQuantity));
 
-            //if (result == String.Format("{0} has been added to the Database",itemName))
+            if (result.Contains(itemName))
+            {
+                string resultMessage = String.Format("{0} was succesfully added to the database, please check the stock levels through the Search feature", itemName);
+                itemName = "";
+                itemCategory = "";
+                itemDescription = "";
+                itemPrice = "";
+                itemQuantity = "";
+            }
+            //if (result == String.Format("{0} has been added to the Database", itemName))
             //{
             //    //Something here to confirm that this was added to data
             //    //itemName was successfully added to the database
+
+
+            //}
+            //else if(result == String.Format("There are now a total of {0} of {1} in stock", totalOfItem, nameOfItem)
+            //{
+            //    //a certain quantity has been added
             //}
             //else
             //{
-            //    //Message Box?
-            //    //error message
+            //    //else something went wrong, dont think this is possible
             //}
         }
 

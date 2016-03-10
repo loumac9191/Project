@@ -66,12 +66,12 @@ namespace ECommerce.Project
 
         //this will now need to include a number to instruct many items of stock need to be deleted
 
-        public string RemoveStock(string itemToRemoveFromStock)
+        public string RemoveStock(string itemToRemoveFromStock, int itemQuantity)
         {
             string removeResult;
             try
             {
-                removeResult = sIRepository.RemoveItem(itemToRemoveFromStock);
+                removeResult = sIRepository.RemoveItem(itemToRemoveFromStock, itemQuantity);
                 return removeResult;
             }
             catch (Exception exception)

@@ -117,7 +117,7 @@
                         <TextBox Grid.Column="1" Grid.Row="3" Margin="3,3,3,3" VerticalContentAlignment="Center" Text="{Binding itemPrice, Mode=TwoWay}"/>
                         <Rectangle Grid.Row="4" Grid.Column="0" Fill="#373737"/>
                         <Label Grid.Row="4" Grid.Column="0" Style="{StaticResource TableLabelFontStyle}">Quantity:</Label>
-                        <TextBox Grid.Row="4" Grid.Column="1" Margin="3,3,3,3" VerticalContentAlignment="Center" Text="{Binding itemPrice, Mode=TwoWay}"/>
+                        <TextBox Grid.Row="4" Grid.Column="1" Margin="3,3,3,3" VerticalContentAlignment="Center" Text="{Binding itemQuantity, Mode=TwoWay}"/>
                         <Rectangle Grid.Row="5" Grid.Column="0" Fill="#373737"/>
                         <Label Grid.Row="5" Grid.Column="0" Style="{StaticResource TableLabelFontStyle}">Description:</Label>
                         <TextBox Grid.Row="5" Grid.Column="1" Margin="3,3,3,3" AcceptsReturn="True" VerticalContentAlignment="Center" Text="{Binding itemDescription, Mode=TwoWay}"/>
