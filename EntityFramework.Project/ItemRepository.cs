@@ -23,32 +23,30 @@ namespace EntityFramework.Project
 
         public virtual item RetrieveItemByName(string nameOfItemToRetrieve)
         {
-            item itemToRetrieve;
+            item itemToRetrieve = null;
 
-            try
+            if (_context.items.SingleOrDefault(x => x.name == nameOfItemToRetrieve) != null)
             {
-                //this used to have a using statement
-                itemToRetrieve = _context.items.SingleOrDefault(x => x.name == nameOfItemToRetrieve);
+                itemToRetrieve = _context.items.Single(x => x.name == nameOfItemToRetrieve);
                 return itemToRetrieve;
             }
-            catch (Exception exception)
+            else
             {
-                throw exception;
+                return itemToRetrieve;
             }
-        }
 
-        //public item testingMethod(string testString)
-        //{
-        //    item itemToReturn;
-        //    using (var context = new ProjectDatabaseEntities())
-        //    {
-        //        var query = (from i in context.items
-        //                     where i.name == testString
-        //                     select i);
-        //        itemToReturn = (item)query;                
-        //    }
-        //    return itemToReturn;
-        //}
+            //OLD CODE//
+            //try
+            //{
+            //    //this used to have a using statement
+            //    itemToRetrieve = _context.items.SingleOrDefault(x => x.name == nameOfItemToRetrieve);
+            //    return itemToRetrieve;
+            //}
+            //catch (Exception exception)
+            //{
+            //    throw exception;
+            //}
+        }
 
         public virtual string AddItem(string nameOfItem, string categoryOfItem, string itemDescriptionOfItem, decimal priceOfItem, int quantityOfItemToAdd)
         {
@@ -114,59 +112,115 @@ namespace EntityFramework.Project
 
         public virtual user LoginViaEntityFramework(string userName, string passWord)
         {
-            try
-            {
-                using (_context)
-                {
-                    user userToLogIn = _context.users.SingleOrDefault(x => x.username == userName);
+            //REFACTOR//
+            user userToLogin = null;
 
-                    if (userToLogIn.user_password == passWord)
-                    {
-                        return userToLogIn;
-                    }
-                    else
-                    {
-                        return null;
-                    }
-                }
-            }
-            catch (Exception)
+            if (_context.users.SingleOrDefault(x => x.username == userName) == null)
             {
-                throw;
+                return userToLogin;
             }
+            else if (_context.users.SingleOrDefault(x => x.username == userName).user_password == passWord)
+            {
+                userToLogin = _context.users.SingleOrDefault(x => x.username == userName);
+                return userToLogin;
+            }
+            else
+            {
+                return userToLogin;
+            }
+
+            //OLD CODE//
+            //try
+            //{
+            //    using (_context)
+            //    {
+            //        user userToLogIn = _context.users.SingleOrDefault(x => x.username == userName);
+
+            //        if (userToLogIn.user_password == passWord)
+            //        {
+            //            return userToLogIn;
+            //        }
+            //        else
+            //        {
+            //            return null;
+            //        }
+            //    }
+            //}
+            //catch (Exception)
+            //{
+            //    throw;
+            //}
         }
 
         public virtual string RegisterNewUser(string firstName, string lastName, string userName, string passWord)
         {
             string returnString;
 
-            try
+            if (_context.users.SingleOrDefault(x => x.username == userName) == null)
             {
                 user newUser = new user();
                 newUser.username = userName;
                 newUser.user_password = passWord;
                 newUser.firstName = firstName;
                 newUser.lastName = lastName;
-                using (_context)
-                {
-                    if (_context.users.Count(x => x.username == newUser.username) < 1)
-                    {
-                        _context.users.Add(newUser);
-                        _context.SaveChanges();
-                        returnString = String.Format("{0} has been added to the database", userName);
-                        return returnString;
-                    }
-                    else
-                    {
-                        returnString = String.Format("{0} already exists on the database", userName);
-                        return returnString;
-                    }
-                }
-            }
-            catch (Exception exception)
-            {
-                returnString = String.Format("The following exception was thrown: {0}", exception.Message);
+
+                _context.users.Add(newUser);
+                _context.SaveChanges();
+
+                returnString = String.Format("{0} has been added to the database", userName);
                 return returnString;
+            }
+            else
+            {
+                returnString = String.Format("{0} already exists on the database", userName);
+                return returnString;
+            }
+
+            // OLD CODE //
+            //try
+            //{
+            //    user newUser = new user();
+            //    newUser.username = userName;
+            //    newUser.user_password = passWord;
+            //    newUser.firstName = firstName;
+            //    newUser.lastName = lastName;
+            //    using (_context)
+            //    {
+            //        if (_context.users.Count(x => x.username == newUser.username) < 1)
+            //        {
+            //            _context.users.Add(newUser);
+            //            _context.SaveChanges();
+            //            returnString = String.Format("{0} has been added to the database", userName);
+            //            return returnString;
+            //        }
+            //        else
+            //        {
+            //            returnString = String.Format("{0} already exists on the database", userName);
+            //            return returnString;
+            //        }
+            //    }
+            //}
+            //catch (Exception exception)
+            //{
+            //    returnString = String.Format("The following exception was thrown: {0}", exception.Message);
+            //    return returnString;
+            //}
+        }
+
+        public int GetStockCount(string nameOfItemToCount)
+        {
+            // need to check that this not null before it can check the quantity in the lambda expression
+            int countOfStock;
+
+            if (_context.items.SingleOrDefault(x => x.name == nameOfItemToCount).quantityOfItem >= 1)
+            {
+                countOfStock = Convert.ToInt32(_context.items.SingleOrDefault(x => x.name == nameOfItemToCount).quantityOfItem);
+                return countOfStock;
+            }
+            else
+            {
+                countOfStock = 0;
+                return countOfStock;
             }
         }
     }

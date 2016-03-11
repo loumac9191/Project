@@ -101,6 +101,7 @@ namespace ECommerce.Tests
         {
             //http://stackoverflow.com/questions/21555070/entity-framework-testing-that-savechanges-is-present-and-called-in-the-correct
             //Arrange
+            int itemQuantity = 1;
             var data = new List<item>()
             {
                 new item() { name="abc" },
@@ -122,7 +123,7 @@ namespace ECommerce.Tests
             ItemRepository iRepository = new ItemRepository(mockContext.Object);
             
             //Act
-            string expectedResult = iRepository.RemoveItem("abc");
+            string expectedResult = iRepository.RemoveItem(data.ElementAt(1).name, itemQuantity);
 
             //Assert
             mockContext.Verify(x => x.SaveChanges(), Times.Once());

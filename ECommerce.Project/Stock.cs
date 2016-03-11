@@ -21,40 +21,60 @@ namespace ECommerce.Project
             sIRepository = itemRepo;
         }
 
-        //public void CreateStock()
-        //{
-        //    //
-        //}
-
-        //untested
+        //untested - need to check that the name test works
         public item StockRetriever(string itemToCheck)
         {
-            try
+            item itemTest = null;
+            item itemToCheckFromStock = sIRepository.RetrieveItemByName(itemToCheck);
+            if (itemTest.name == itemToCheckFromStock.name)
             {
-                item itemToCheckFromStock = sIRepository.RetrieveItemByName(itemToCheck);
                 return itemToCheckFromStock;
             }
-            catch (Exception)
-            {                
-                throw;
+            else
+            {
+                return itemToCheckFromStock;
             }
+
+            // OLD CODE //        
+            //try
+            //{
+            //    item itemToCheckFromStock = sIRepository.RetrieveItemByName(itemToCheck);
+            //    return itemToCheckFromStock;
+            //}
+            //catch (Exception)
+            //{                
+            //    throw;
+            //}
         }
 
         public string StockChecker(string itemToCheck)
         {
             string checkResult;
-
-            try
+            int quantityOfStock = sIRepository.GetStockCount(itemToCheck);
+            if (quantityOfStock >= 1)
             {
-                item itemToAdd = sIRepository.RetrieveItemByName(itemToCheck);
-                checkResult = String.Format("{0} is in stock.", itemToCheck);
+                
+                checkResult = String.Format("{0} stock count is: {1}",itemToCheck,quantityOfStock);
                 return checkResult;
             }
-            catch (Exception exception)
+            else
             {
-                checkResult = String.Format("Error: {0} Inner Exception: {1}", exception.Message, exception.InnerException);
+                checkResult = String.Format("{0} is not in stock",itemToCheck);
                 return checkResult;
-            }        
+            }
+
+            //OLD CODE//
+            //try
+            //{
+            //    item itemToAdd = sIRepository.RetrieveItemByName(itemToCheck);
+            //    checkResult = String.Format("{0} is in stock.", itemToCheck);
+            //    return checkResult;
+            //}
+            //catch (Exception exception)
+            //{
+            //    checkResult = String.Format("Error: {0} Inner Exception: {1}", exception.Message, exception.InnerException);
+            //    return checkResult;
+            //}        
         }
 
         public string AddStock(string nameOfItem, string categoryOfItem, string itemDescriptionOfItem, decimal priceOfItem, int quantityOfItemToAdd)
@@ -64,20 +84,11 @@ namespace ECommerce.Project
             return addResult;
         }
 
-        //this will now need to include a number to instruct many items of stock need to be deleted
-
         public string RemoveStock(string itemToRemoveFromStock, int itemQuantity)
         {
             string removeResult;
-            try
-            {
-                removeResult = sIRepository.RemoveItem(itemToRemoveFromStock, itemQuantity);
-                return removeResult;
-            }
-            catch (Exception exception)
-            {   
-                throw exception;
-            }
+            removeResult = sIRepository.RemoveItem(itemToRemoveFromStock, itemQuantity);
+            return removeResult;           
         }
     }
 }

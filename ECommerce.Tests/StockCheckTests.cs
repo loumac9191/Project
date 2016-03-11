@@ -29,20 +29,21 @@ namespace ECommerce.Tests
             Assert.AreEqual(stockCheckResult, "adidas Mens Brazuca Top Replique Ball is in stock.");
         }
         [TestMethod]
-        public void TestRemoveStock_ReturnsAStringDetailingThatAnItemInTheDatabaseHasBeenRemoved_WhenGivenTheNameOfThatItem()
+        public void TestRemoveStock_ReturnsAStringDetailingThatAnItemInTheDatabaseHasBeenRemoved_WhenGivenTheNameOfThatItemAndTheQuantityToRemove()
         {
             //Arrange
             var mockSet = new Mock<ProjectDatabaseEntities>();
 
             string itemName = "adidas Mens Brazuca Top Replique Ball";
+            int quantityOfItem = 1;
             Mock<ItemRepository> iRepos = new Mock<ItemRepository>(mockSet.Object);
             item returnedItem = new item() { name = itemName, item_id = 1 };
             Stock stockCheck = new Stock(iRepos.Object);
 
-            iRepos.Setup(x => x.RemoveItem(It.Is<string>(s => s == itemName))).Returns(String.Format("{0} has been removed from the Database.", itemName));
+            iRepos.Setup(x => x.RemoveItem(It.Is<string>(s => s == itemName),It.Is<int>(s => s == quantityOfItem))).Returns(String.Format("{0} has been removed from the Database.", itemName));
 
             //Act
-            string removeItemResult = stockCheck.RemoveStock(itemName);
+            string removeItemResult = stockCheck.RemoveStock(itemName,quantityOfItem);
 
             //Assert
             Assert.AreEqual(removeItemResult, "adidas Mens Brazuca Top Replique Ball has been removed from the Database.");

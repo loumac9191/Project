@@ -7,7 +7,7 @@
       <Diagram DiagramId="f7f81e6fd98942819c37892620f1ccb4" Name="Diagram1">
         <EntityTypeShape EntityType="ProjectDatabaseModel.item" Width="1.5" PointX="0.75" PointY="0.875" IsExpanded="true" />
         <EntityTypeShape EntityType="ProjectDatabaseModel.purchase" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="ProjectDatabaseModel.user" Width="1.5" PointX="2.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjectDatabaseModel.user" Width="1.5" PointX="5.25" PointY="1.125" IsExpanded="true" />
         <AssociationConnector Association="ProjectDatabaseModel.fk_purchase_itemid" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>

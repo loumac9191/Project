@@ -50,20 +50,12 @@ namespace ECommerce.Project
                 return removeItemResult;
 	        }
             else
-	        {
-                try 
-	            {	        
-		            item itemToRemove = basket.SingleOrDefault(i => i.Key.name == itemName).Key;
+	        {        
+		        item itemToRemove = basket.SingleOrDefault(i => i.Key.name == itemName).Key;
                     
-                    removeItemResult = String.Format("{0} has been successfully removed.", itemName);
-                    basket.Remove(itemToRemove);
-                    return removeItemResult;                  
-	            }
-	            catch (Exception exception)
-	            {
-                    removeItemResult = String.Format("Error: {0} Inner Exception: {1}", exception.Message, exception.InnerException);
-                    return removeItemResult;
-	            }
+                removeItemResult = String.Format("{0} has been successfully removed.", itemName);
+                basket.Remove(itemToRemove);
+                return removeItemResult;                  	          
 	        }
         }
 
