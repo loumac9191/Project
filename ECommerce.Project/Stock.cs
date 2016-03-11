@@ -23,10 +23,9 @@ namespace ECommerce.Project
 
         //untested - need to check that the name test works
         public item StockRetriever(string itemToCheck)
-        {
-            item itemTest = null;
+        {            
             item itemToCheckFromStock = sIRepository.RetrieveItemByName(itemToCheck);
-            if (itemTest.name == itemToCheckFromStock.name)
+            if (itemToCheckFromStock.name == null || itemToCheckFromStock.name == "")
             {
                 return itemToCheckFromStock;
             }

@@ -23,7 +23,7 @@ namespace EntityFramework.Project
 
         public virtual item RetrieveItemByName(string nameOfItemToRetrieve)
         {
-            item itemToRetrieve = null;
+            item itemToRetrieve;
 
             if (_context.items.SingleOrDefault(x => x.name == nameOfItemToRetrieve) != null)
             {
@@ -32,6 +32,7 @@ namespace EntityFramework.Project
             }
             else
             {
+                itemToRetrieve = new item();                    
                 return itemToRetrieve;
             }
 
@@ -64,8 +65,7 @@ namespace EntityFramework.Project
                 _context.items.Add(itemToAdd);
                 _context.SaveChanges();
                 toAddResult = String.Format("{0} has been added to the Database", itemToAdd.name);
-                return toAddResult;
-                
+                return toAddResult;             
 	        }
             else
 	        {                
@@ -207,7 +207,7 @@ namespace EntityFramework.Project
             //}
         }
 
-        public int GetStockCount(string nameOfItemToCount)
+        public virtual int GetStockCount(string nameOfItemToCount)
         {
             // need to check that this not null before it can check the quantity in the lambda expression
             int countOfStock;

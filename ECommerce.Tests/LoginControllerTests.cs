@@ -39,9 +39,9 @@ namespace ECommerce.Tests
 
             var data = new List<user>()
             {
-                new user() { username="bobSmith", user_password="123" },
-                new user() { username="chrisBird", user_password="421" },
-                new user() { username="samGerrett", user_password="532" },
+                new user() { username="bobSmith", user_password="123" , firstName = "Bob", lastName = "Smith" },
+                new user() { username="chrisBird", user_password="421", firstName = "Chris", lastName = "Bird"  },
+                new user() { username="samGerrett", user_password="532", firstName = "Sam", lastName = "Gerrett" },
             }.AsQueryable();
 
             user userToGet = data.ElementAt(0);

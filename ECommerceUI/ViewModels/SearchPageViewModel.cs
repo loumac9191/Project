@@ -159,30 +159,23 @@ namespace ECommerceUI.ViewModels
         public void GetItem()
         {
             item retrievedItem = _stockChecker.StockRetriever(itemSearched);
-            //need to add id and quantity to this
 
-           itemID = retrievedItem.item_id.ToString(); 
-           itemName = retrievedItem.name;
-           itemCategory = retrievedItem.category;
-           itemPrice = retrievedItem.price.ToString();
-           itemStockTotal = retrievedItem.quantityOfItem.ToString();
-            // THIS MIGHT BE BETTER AS IT WILL SHOW WHEN AN ITEM ISNT AVAILABLE //
-            //if ((retrievedItem =_stockChecker.StockRetriever(itemSearched)) != null)
-            //{
-            //    itemID = retrievedItem.item_id.ToString();
-            //    itemName = retrievedItem.name;
-            //    itemCategory = retrievedItem.category;
-            //    itemPrice = retrievedItem.price.ToString();
-            //    itemStockTotal = retrievedItem.quantityOfItem.ToString();
-            //}
-            //else
-            //{
-            //    itemID = "N/A";
-            //    itemName = "N/A";
-            //    itemCategory = "N/A";
-            //    itemPrice = "N/A";
-            //    itemStockTotal = "N/A";
-            //}
+            if (retrievedItem.name == null || retrievedItem.name == "")
+            {
+                itemID = "N/A";
+                itemName = "N/A";
+                itemCategory = "N/A";
+                itemPrice = "N/A";
+                itemStockTotal = "N/A";
+            }
+            else
+            {
+                itemID = retrievedItem.item_id.ToString();
+                itemName = retrievedItem.name;
+                itemCategory = retrievedItem.category;
+                itemPrice = retrievedItem.price.ToString();
+                itemStockTotal = retrievedItem.quantityOfItem.ToString();
+            }
         }
 
         public bool CanGetItem()
