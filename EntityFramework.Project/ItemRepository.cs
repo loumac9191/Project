@@ -52,16 +52,17 @@ namespace EntityFramework.Project
         public virtual string AddItem(string nameOfItem, string categoryOfItem, string itemDescriptionOfItem, decimal priceOfItem, int quantityOfItemToAdd)
         {
             string toAddResult;
-            item itemToAdd = new item();
 
-            itemToAdd.name = nameOfItem;
-
-            if (_context.items.SingleOrDefault(i => i.name == itemToAdd.name) == null)
-	        {            
-                itemToAdd.category = categoryOfItem;
-                itemToAdd.item_description = itemDescriptionOfItem;
-                itemToAdd.price = priceOfItem;
-                itemToAdd.quantityOfItem = quantityOfItemToAdd;
+            if (_context.items.SingleOrDefault(i => i.name == nameOfItem) == null)
+	        {
+                item itemToAdd = new item() 
+                {
+                    name = nameOfItem,
+                    category = categoryOfItem,
+                    item_description = itemDescriptionOfItem,
+                    price = priceOfItem,
+                    quantityOfItem = quantityOfItemToAdd
+                };
                 _context.items.Add(itemToAdd);
                 _context.SaveChanges();
                 toAddResult = String.Format("{0} has been added to the Database", itemToAdd.name);
@@ -71,7 +72,7 @@ namespace EntityFramework.Project
 	        {                
                 int totalOfItem = Convert.ToInt32(_context.items.SingleOrDefault(i => i.name == nameOfItem).quantityOfItem);
                 
-                _context.items.SingleOrDefault(i => i.name == itemToAdd.name).quantityOfItem += quantityOfItemToAdd;
+                _context.items.SingleOrDefault(i => i.name == nameOfItem).quantityOfItem += quantityOfItemToAdd;
                 _context.SaveChanges();
                 toAddResult = String.Format("There are now a total of {0} of {1} in stock", (totalOfItem+quantityOfItemToAdd), nameOfItem);
                 return toAddResult;
@@ -113,10 +114,11 @@ namespace EntityFramework.Project
         public virtual user LoginViaEntityFramework(string userName, string passWord)
         {
             //REFACTOR//
-            user userToLogin = null;
+            user userToLogin;
 
             if (_context.users.SingleOrDefault(x => x.username == userName) == null)
             {
+                userToLogin = new user();
                 return userToLogin;
             }
             else if (_context.users.SingleOrDefault(x => x.username == userName).user_password == passWord)
@@ -126,6 +128,7 @@ namespace EntityFramework.Project
             }
             else
             {
+                userToLogin = new user();
                 return userToLogin;
             }
 

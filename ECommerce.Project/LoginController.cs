@@ -25,7 +25,7 @@ namespace ECommerce.Project
         {
             string returnString;
             user currentUser = iRepository.LoginViaEntityFramework(userName, passWord);
-            if (currentUser.firstName != null)
+            if (currentUser.firstName != null || currentUser.firstName == "")
             {
                 returnString = String.Format("Welcome {0}", userName);
                 return returnString;
