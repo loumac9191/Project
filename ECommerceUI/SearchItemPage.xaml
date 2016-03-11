@@ -66,6 +66,15 @@
                 </Setter.Value>
             </Setter>
         </Style>
+        
+        
+        <!--<Style TargetType="ScrollBar">
+            
+        </Style>-->
+        <Style TargetType="ListBox">
+            <Setter Property="FontFamily" Value="Microsoft NeoGothic"/>
+            <Setter Property="FontSize" Value="12"/>
+        </Style>
     </Page.Resources>
     <Grid Background="#9C9393">
         <Grid.ColumnDefinitions>
@@ -93,11 +102,15 @@
                 </Grid.RowDefinitions>
                 <Rectangle Grid.Row="0" Fill="#373737"/>
                 <Label Grid.Row="0" Content="search database for items in stock" Style="{StaticResource LabelSubHeaderFontStyle}"/>
-                <Grid Grid.Row="1">
-                    <Grid>
+                <Grid Grid.Row="1"><!---->
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid Grid.Column="0">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="1*"/>
-                            <ColumnDefinition Width="4*"/>
+                            <ColumnDefinition Width="9*"/>
                             <ColumnDefinition Width="1*"/>
                         </Grid.ColumnDefinitions>
                         <Grid Grid.Column="1">
@@ -150,7 +163,31 @@
                             </Grid>
                         </Grid>
                     </Grid>
-                </Grid>
+                    <Grid Grid.Column="1">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="9*"/>
+                                <ColumnDefinition Width="1*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="2*"/>
+                                <RowDefinition Height="96*"/>
+                                <RowDefinition Height="2*"/>
+                            </Grid.RowDefinitions>
+                            <Grid Grid.Column="1" Grid.Row="1">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="1*"/>
+                                        <RowDefinition Height="9*"/>
+                                    </Grid.RowDefinitions>
+                                        <Button Grid.Row="0" Content="items in database" Command="{Binding getAllItems}"/>
+                                        <ListBox Grid.Row="1" Background="White" ItemsSource="{Binding allItemsInDb}"/>
+                                </Grid>
+                            </Grid>
+                        </Grid>
+                    </Grid>
+                </Grid><!---->
             </Grid>
         </Grid>
         <Grid Grid.Row="1" Grid.RowSpan="2" Grid.Column="0">

@@ -6,6 +6,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using EntityFramework.Project;
+using System.Collections.ObjectModel;
+using System.ServiceModel;
 
 namespace ECommerceUI.ViewModels
 {
@@ -194,10 +196,12 @@ namespace ECommerceUI.ViewModels
         }
 
         private Stock _stockChecker;
+        private IItemRepository _iIRepo;
 
         public SearchPageViewModel()
         {
             _stockChecker = new Stock();
+            _iIRepo = new ItemRepository();
         }
 
         public void AddItem()
@@ -232,5 +236,48 @@ namespace ECommerceUI.ViewModels
         {
             return true;
         }
+
+        private ICommand _getAllItems;
+
+        public ICommand getAllItems
+        {
+            get 
+            {
+                if (_getAllItems == null)
+                {
+                    _getAllItems = new Command(GetAllItems, CanGetAllItems);
+                }
+                return _getAllItems; 
+            }
+            set { _getAllItems = value; }
+        }
+
+        private ObservableCollection<string> _allItemsInDb;
+
+        public ObservableCollection<string> allItemsInDb
+        {
+            get { return _allItemsInDb; }
+            set 
+            {
+                _allItemsInDb = value;
+                OnPropertyChanged("allItemsInDb");
+            }
+        }
+
+        public void GetAllItems()
+        {
+            EndpointAddress endpoint = new EndpointAddress("http://TRNLON11605:8081/ECommerce");
+            IItemRepository _iIRepoForTypeOf = ChannelFactory<IItemRepository>.CreateChannel(new BasicHttpBinding(), endpoint);
+
+            List<string> returnedItems = _iIRepo.GetStockList();
+            allItemsInDb = new ObservableCollection<string>(returnedItems);
+        }
+
+        public bool CanGetAllItems()
+        {
+            return true;
+        }
+        
+        
     }
 }

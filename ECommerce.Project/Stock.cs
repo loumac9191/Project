@@ -64,6 +64,6 @@ namespace ECommerce.Project
             string removeResult;
             removeResult = sIRepository.RemoveItem(itemToRemoveFromStock, itemQuantity);
             return removeResult;           
-        }
+        } 
     }
 }

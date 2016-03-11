@@ -160,5 +160,17 @@ namespace EntityFramework.Project
                 return countOfStock;
             }
         }
+
+        public virtual List<string> GetStockList()
+        {
+            List<string> listOfItems = new List<string>();
+
+            foreach (item item in _context.items)
+            {
+                listOfItems.Add(item.name.ToString());    
+            }
+         
+            return listOfItems;
+        }
     }
 }

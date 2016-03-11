@@ -11,6 +11,9 @@ namespace EntityFramework.Project
 {
     using System;
     using System.Collections.Generic;
+    using System.Runtime.Serialization;
+
+    [DataContract]
     
     public partial class item
     {
@@ -18,8 +21,10 @@ namespace EntityFramework.Project
         {
             this.purchases = new HashSet<purchase>();
         }
-    
+
+        //[DataMember]
         public int item_id { get; set; }
+        [DataMember]
         public string name { get; set; }
         public string category { get; set; }
         public string item_description { get; set; }

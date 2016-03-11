@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace EntityFramework.Project
 {
+    [ServiceContract] 
     public interface IItemRepository
     {
         item RetrieveItemByName(string nameOfItemToAdd);
@@ -14,5 +16,8 @@ namespace EntityFramework.Project
         string RegisterNewUser(string firstName, string lastName, string userName, string passWord);
         user LoginViaEntityFramework(string userName, string passWord);
         int GetStockCount(string itemToCount);
+        
+        [OperationContract]
+        List<string> GetStockList();
     }
 }
