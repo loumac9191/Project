@@ -219,6 +219,11 @@
                                     <Rectangle Grid.Row="1" Grid.Column="1" Grid.RowSpan="5" Fill="White" Margin="3,3,3,3"/>
                                     <Rectangle Grid.Row="1" Grid.Column="0" Grid.RowSpan="5" Fill="#373737" Margin="3,3,3,3"/>
                                     <Label Grid.Column="0" Grid.Row="1" Style="{StaticResource TableLabelFontStyle}">Item ID:</Label>
+                                    <Border BorderBrush="#9C9393" BorderThickness="1" Grid.Row="1" Grid.Column="1"/>
+                                    <Border BorderBrush="#9C9393" BorderThickness="1" Grid.Row="2" Grid.Column="1"/>
+                                    <Border BorderBrush="#9C9393" BorderThickness="1" Grid.Row="3" Grid.Column="1"/>
+                                    <Border BorderBrush="#9C9393" BorderThickness="1" Grid.Row="4" Grid.Column="1"/>
+                                    <Border BorderBrush="#9C9393" BorderThickness="1" Grid.Row="5" Grid.Column="1"/>
                                     <TextBlock Grid.Column="1" Grid.Row="1" Margin="3,3,3,3" Text="{Binding itemID}" Style="{StaticResource TextBlockResultStyle}"/>
                                     <Label Grid.Column="0" Grid.Row="2" Style="{StaticResource TableLabelFontStyle}">Name:</Label>
                                     <TextBlock Grid.Column="1" Grid.Row="2" Margin="3,3,3,3" Text="{Binding itemName}" Style="{StaticResource TextBlockResultStyle}"/>

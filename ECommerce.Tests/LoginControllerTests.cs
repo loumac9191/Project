@@ -30,6 +30,9 @@ namespace ECommerce.Tests
             //Assert
             iRepo.Verify(x => x.LoginViaEntityFramework(userName, userPassword), Times.Once);
         }
+
+        //THIS TESTS NEEDS TO BE REWORKED AS IT IS TESTING MORE THAN ONE THING //
+
         [TestMethod]
         public void TestLoginMethod_ReturnsBothTheUserObjectAndSuccessfulLoginString_WhenGivenTheUsernameAndPasswordStrings()
         {

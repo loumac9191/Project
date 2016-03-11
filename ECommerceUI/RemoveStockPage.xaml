@@ -105,10 +105,10 @@
                         <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Content="item details" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                         <Rectangle Grid.Row="1" Grid.Column="0" Fill="#373737"/>
                         <Label Grid.Row="1" Grid.Column="0" Style="{StaticResource TableLabelFontStyle}">Name</Label>
-                        <TextBox Grid.Row="1" Grid.Column="1" Margin="3,3,3,3" VerticalContentAlignment="Center" Text="{Binding itemName}"/>
+                        <TextBox Grid.Row="1" Grid.Column="1"  VerticalContentAlignment="Center" Text="{Binding itemName}"/>
                         <Rectangle Grid.Row="2" Grid.Column="0" Fill="#373737"/>
                         <Label Grid.Row="2" Grid.Column="0" Style="{StaticResource TableLabelFontStyle}">Quantity:</Label>
-                        <TextBox Grid.Column="1" Grid.Row="2" Margin="3,3,3,3" VerticalContentAlignment="Center" Text="{Binding itemQuantity}"/>
+                        <TextBox Grid.Column="1" Grid.Row="2" VerticalContentAlignment="Center" Text="{Binding itemQuantity}"/>
                         <Button Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="3" Content="remove item from database" Command="{Binding itemToRemoveFromDatabase}"/>
                     </Grid>
                 </Grid>
