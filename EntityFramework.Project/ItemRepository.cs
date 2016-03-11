@@ -35,18 +35,6 @@ namespace EntityFramework.Project
                 itemToRetrieve = new item();                    
                 return itemToRetrieve;
             }
-
-            //OLD CODE//
-            //try
-            //{
-            //    //this used to have a using statement
-            //    itemToRetrieve = _context.items.SingleOrDefault(x => x.name == nameOfItemToRetrieve);
-            //    return itemToRetrieve;
-            //}
-            //catch (Exception exception)
-            //{
-            //    throw exception;
-            //}
         }
 
         public virtual string AddItem(string nameOfItem, string categoryOfItem, string itemDescriptionOfItem, decimal priceOfItem, int quantityOfItemToAdd)
@@ -113,7 +101,6 @@ namespace EntityFramework.Project
 
         public virtual user LoginViaEntityFramework(string userName, string passWord)
         {
-            //REFACTOR//
             user userToLogin;
 
             if (_context.users.SingleOrDefault(x => x.username == userName) == null)
@@ -131,28 +118,6 @@ namespace EntityFramework.Project
                 userToLogin = new user();
                 return userToLogin;
             }
-
-            //OLD CODE//
-            //try
-            //{
-            //    using (_context)
-            //    {
-            //        user userToLogIn = _context.users.SingleOrDefault(x => x.username == userName);
-
-            //        if (userToLogIn.user_password == passWord)
-            //        {
-            //            return userToLogIn;
-            //        }
-            //        else
-            //        {
-            //            return null;
-            //        }
-            //    }
-            //}
-            //catch (Exception)
-            //{
-            //    throw;
-            //}
         }
 
         public virtual string RegisterNewUser(string firstName, string lastName, string userName, string passWord)
@@ -178,41 +143,10 @@ namespace EntityFramework.Project
                 returnString = String.Format("{0} already exists on the database", userName);
                 return returnString;
             }
-
-            // OLD CODE //
-            //try
-            //{
-            //    user newUser = new user();
-            //    newUser.username = userName;
-            //    newUser.user_password = passWord;
-            //    newUser.firstName = firstName;
-            //    newUser.lastName = lastName;
-            //    using (_context)
-            //    {
-            //        if (_context.users.Count(x => x.username == newUser.username) < 1)
-            //        {
-            //            _context.users.Add(newUser);
-            //            _context.SaveChanges();
-            //            returnString = String.Format("{0} has been added to the database", userName);
-            //            return returnString;
-            //        }
-            //        else
-            //        {
-            //            returnString = String.Format("{0} already exists on the database", userName);
-            //            return returnString;
-            //        }
-            //    }
-            //}
-            //catch (Exception exception)
-            //{
-            //    returnString = String.Format("The following exception was thrown: {0}", exception.Message);
-            //    return returnString;
-            //}
         }
 
         public virtual int GetStockCount(string nameOfItemToCount)
         {
-            // need to check that this not null before it can check the quantity in the lambda expression
             int countOfStock;
 
             if (_context.items.SingleOrDefault(x => x.name == nameOfItemToCount).quantityOfItem >= 1)

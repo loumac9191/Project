@@ -33,17 +33,6 @@ namespace ECommerce.Project
             {
                 return itemToCheckFromStock;
             }
-
-            // OLD CODE //        
-            //try
-            //{
-            //    item itemToCheckFromStock = sIRepository.RetrieveItemByName(itemToCheck);
-            //    return itemToCheckFromStock;
-            //}
-            //catch (Exception)
-            //{                
-            //    throw;
-            //}
         }
 
         public string StockChecker(string itemToCheck)
@@ -60,20 +49,7 @@ namespace ECommerce.Project
             {
                 checkResult = String.Format("{0} is not in stock",itemToCheck);
                 return checkResult;
-            }
-
-            //OLD CODE//
-            //try
-            //{
-            //    item itemToAdd = sIRepository.RetrieveItemByName(itemToCheck);
-            //    checkResult = String.Format("{0} is in stock.", itemToCheck);
-            //    return checkResult;
-            //}
-            //catch (Exception exception)
-            //{
-            //    checkResult = String.Format("Error: {0} Inner Exception: {1}", exception.Message, exception.InnerException);
-            //    return checkResult;
-            //}        
+            }    
         }
 
         public string AddStock(string nameOfItem, string categoryOfItem, string itemDescriptionOfItem, decimal priceOfItem, int quantityOfItemToAdd)

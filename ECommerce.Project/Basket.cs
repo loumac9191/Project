@@ -18,7 +18,7 @@ namespace ECommerce.Project
         public Basket(IItemRepository itemRepo) 
         {
             _itemRepo = itemRepo;
-            //string basketID = this.basketID.ToString();
+            string basketID = this.basketID.ToString();
         }
 
         //to do later, make sure this adds to database as well
@@ -64,11 +64,11 @@ namespace ECommerce.Project
             return basket;
         }
 
-        public string GetBasketID()
-        {
-            string basketID = this.basketID.ToString();
-            return basketID;
-        }
+        //public string GetBasketID()
+        //{
+        //    string basketID = this.basketID.ToString();
+        //    return basketID;
+        //}
 
         public virtual decimal CalculatePrice()
         {
