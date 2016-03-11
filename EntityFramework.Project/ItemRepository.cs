@@ -168,8 +168,7 @@ namespace EntityFramework.Project
             foreach (item item in _context.items)
             {
                 listOfItems.Add(item.name.ToString());    
-            }
-         
+            }         
             return listOfItems;
         }
     }

@@ -276,8 +276,6 @@ namespace ECommerceUI.ViewModels
         public bool CanGetAllItems()
         {
             return true;
-        }
-        
-        
+        }        
     }
 }
