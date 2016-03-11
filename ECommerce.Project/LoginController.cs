@@ -36,7 +36,7 @@ namespace ECommerce.Project
                 return returnString;
             }
 
-            //OLD CODE//
+            //OLD CODE/
 
             //try
             //{
