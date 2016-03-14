@@ -30,11 +30,43 @@ namespace ECommerce.Tests
             //Assert
             iRepo.Verify(x => x.LoginViaEntityFramework(userName, userPassword), Times.Once);
         }
-
-        //THIS TESTS NEEDS TO BE REWORKED AS IT IS TESTING MORE THAN ONE THING //
-
         [TestMethod]
-        public void TestLoginMethod_ReturnsBothTheUserObjectAndSuccessfulLoginString_WhenGivenTheUsernameAndPasswordStrings()
+        public void TestLoginMethod_ReturnsTheUserObject_WhenGivenCorrectLoginDetails()
+        {
+            //Arrange
+            string userName = "bobSmith";
+            string userPassword = "123";
+
+            var data = new List<user>()
+            {
+                new user() { username="bobSmith", user_password="123" , firstName = "Bob", lastName = "Smith" },
+                new user() { username="chrisBird", user_password="421", firstName = "Chris", lastName = "Bird"  },
+                new user() { username="samGerrett", user_password="532", firstName = "Sam", lastName = "Gerrett" },
+            }.AsQueryable();
+
+            user userToGet = data.ElementAt(0);
+            string expectedString = String.Format("Welcome {0}", userToGet.username);
+
+            var mockSet = new Mock<DbSet<user>>();
+            mockSet.As<IQueryable<user>>().Setup(m => m.Provider).Returns(data.Provider);
+            mockSet.As<IQueryable<user>>().Setup(m => m.Expression).Returns(data.Expression);
+            mockSet.As<IQueryable<user>>().Setup(m => m.ElementType).Returns(data.ElementType);
+            mockSet.As<IQueryable<user>>().Setup(m => m.GetEnumerator()).Returns(() => data.GetEnumerator());
+
+            Mock<ProjectDatabaseEntities> mockContext = new Mock<ProjectDatabaseEntities>();
+            mockContext.Setup(c => c.users).Returns(mockSet.Object);
+
+            ItemRepository iRepository = new ItemRepository(mockContext.Object);
+            LoginController loginController = new LoginController(iRepository);
+
+            //Act
+            user loggedInUser = iRepository.LoginViaEntityFramework(userName, userPassword);
+
+            //Assert
+            Assert.AreEqual(userToGet, loggedInUser);
+        }
+        [TestMethod]
+        public void TestLoginMethod_ReturnsAStringDetailingSuccessfullLogin_WhenGivenCorrectDetails()
         {
             //Arrange
             string userName = "bobSmith";
@@ -70,6 +102,8 @@ namespace ECommerce.Tests
             Assert.AreEqual(userToGet, loggedInUser);
             Assert.AreEqual(expectedString, loggedInUserString);
         }
+
+
         [TestMethod]
         public void TestRegisterNewUser_IsCalled_WhenRegisterMethodIsCalled()
         {
@@ -125,5 +159,10 @@ namespace ECommerce.Tests
             //Assert
             mockContext.Verify(x => x.SaveChanges(), Times.Once());
         }
+        //[TestMethod]
+        //public void TestLoginMethod_ReturnsAStringDetailingTheIncorrectDetailsWhereProvided_WhenTheIncorrectDetailsHaveBeenProvided()
+        //{
+
+        //}
     }
 }

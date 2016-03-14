@@ -97,6 +97,40 @@ namespace ECommerce.Tests
             Assert.AreEqual(1, tOutput.Values.Count);
         }
         [TestMethod]
+        public void TestRemoveItem_ReturnsAStringDetailingThatNoItemNameHasBeenProvided_WhenTryingToRemoveAnItemFromABasketWithOneItem()
+        {
+            //Arrange
+            Mock<ItemRepository> testIRepo = new Mock<ItemRepository>();
+            string testItemName = "";
+            item testItem = new item() { name = "" };
+            testIRepo.Setup(x => x.RetrieveItemByName(It.Is<string>(s => s == testItemName))).Returns(testItem);
+            Basket testBasket = new Basket(testIRepo.Object);
+            string expectedResult = "You have not entered a name of an item you would like to remove.";
+            testBasket.AddItem(testItem.name);
+
+            //Act
+            string actualResult = testBasket.RemoveItem(testItemName);
+
+            //Assert
+            Assert.AreEqual(expectedResult, actualResult);
+
+        }
+        [TestMethod]
+        public void TestRemoveItem_ReturnsAStringDetailingThatTheBasketIsEmpty_WhenTryingToRemoveAnItemFromAnEmptyBasket()
+        {
+            //Arrange
+            Mock<ItemRepository> testIRepo = new Mock<ItemRepository>();
+            item testItem = new item() { name = "test" };
+            Basket testBasket = new Basket(testIRepo.Object);
+            string expectedResult = "Your Basket is currently empty, there is nothing to currently remove from your Basket.";
+            
+            //Act
+            string actualResult = testBasket.RemoveItem(testItem.name);
+
+            //Assert
+            Assert.AreEqual(expectedResult, actualResult);
+        }
+        [TestMethod]
         public void TestCalculatePrice_ReturnsTotalPriceOfItemsInBasket_WhenGivenOneItemWithPriceOf25GBP()
         {
             //Arrange

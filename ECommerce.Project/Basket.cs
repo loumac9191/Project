@@ -25,7 +25,7 @@ namespace ECommerce.Project
         //check to see what is being added isnt null
         public void AddItem(string itemToAddByName)//item itemToAdd)
         {
-            item itemToAdd =_itemRepo.RetrieveItemByName(itemToAddByName);
+            item itemToAdd = _itemRepo.RetrieveItemByName(itemToAddByName);
             basket.Add(itemToAdd,1);
         }
 
@@ -44,7 +44,7 @@ namespace ECommerce.Project
                 removeItemResult = "Your Basket is currently empty, there is nothing to currently remove from your Basket.";
                 return removeItemResult;
             }
-            else if (itemName == null)
+            else if (itemName == null || itemName == "")
 	        {
                 removeItemResult = "You have not entered a name of an item you would like to remove.";
                 return removeItemResult;
