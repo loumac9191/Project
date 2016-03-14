@@ -32,7 +32,6 @@ namespace ECommerce.Tests
             //Assert
             Assert.AreEqual(stockCheckResult, expectedResult);
         }
-
         [TestMethod]
         public void TestStockChecker_ReturnsAStringDetailingTheStockLevelOfAnItem_WhenOneItemIsPassedInToTheStockCheckerMethodAndThatItemsStockLevelIs0()
         {
@@ -53,7 +52,6 @@ namespace ECommerce.Tests
             //Assert
             Assert.AreEqual(stockCheckResult, expectedResult);
         }
-
         [TestMethod]
         public void TestRemoveStock_ReturnsAStringDetailingThatAnItemInTheDatabaseHasBeenRemoved_WhenGivenTheNameOfThatItemAndTheQuantityToRemove()
         {

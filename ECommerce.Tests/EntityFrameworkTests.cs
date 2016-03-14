@@ -32,7 +32,6 @@ namespace ECommerce.Tests
             //Assert
             iRepository.Verify(r => r.RetrieveItemByName(returnedItem.name));
         }
-
         [TestMethod]
         public void TestRetrieveItemByName_ReturnsAnItemWithNameAbc_WhenInjectingAQueryableListOfItemsIntoAMockedEntityFrameworkThatIncludesAnItemWithNameAbc()
         {
