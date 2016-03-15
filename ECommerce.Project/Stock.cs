@@ -21,7 +21,6 @@ namespace ECommerce.Project
             sIRepository = itemRepo;
         }
 
-        //untested - need to check that the name test works
         public item StockRetriever(string itemToCheck)
         {            
             item itemToCheckFromStock = sIRepository.RetrieveItemByName(itemToCheck);
