@@ -16,6 +16,7 @@ namespace EntityFramework.Project
         string RegisterNewUser(string firstName, string lastName, string userName, string passWord);
         user LoginViaEntityFramework(string userName, string passWord);
         int GetStockCount(string itemToCount);
+        List<item> RetrieveAllStockItems();
         
         [OperationContract]
         List<string> GetStockList();

@@ -171,5 +171,16 @@ namespace EntityFramework.Project
             }         
             return listOfItems;
         }
+
+        public virtual List<item> RetrieveAllStockItems()
+        {
+            List<item> listOfItems = new List<item>();
+
+            foreach (item item in _context.items)
+            {
+                listOfItems.Add(item);
+            }
+            return listOfItems;
+        }
     }
 }
