@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ECommerceASP.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,7 +12,8 @@ namespace ECommerceASP.Controllers
         // GET: ECommerce
         public ActionResult Index()
         {
-            return View();
+            ECommerceViewModel vm = new ECommerceViewModel();
+            return View(vm);
         }
     }
 }

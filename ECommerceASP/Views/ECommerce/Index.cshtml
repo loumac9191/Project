@@ -1,4 +1,6 @@
-﻿@{
+﻿@model ECommerceASP.Models.ECommerceViewModel
+
+@{
     Layout = null;
 }
 
@@ -60,14 +62,14 @@
     <!-- Page Content -->
     <div class="container">
         <div class="row">
-            <div class="col-md-3">
+            @*<div class="col-md-3">
                 <p class="lead">FDM-Bay</p>
                 <div class="list-group">
                     <a href="#" class="list-group-item">Category 1</a>
                     <a href="#" class="list-group-item">Category 2</a>
                     <a href="#" class="list-group-item">Category 3</a>
                 </div>
-            </div>
+            </div>*@
             <div class="col-md-9">
                 <div class="row carousel-holder">
                     <div class="col-md-12">
@@ -103,7 +105,7 @@
                         <div class="caption">
                             <h4 class="pull-right">£549.99</h4>
                             <h4>
-                                <a href="#"></a>
+                                <a href="#">iPhone 6s</a>
                             </h4>
                             <p>3D Touch - Camera - 4k videos - A9 Chip -Breakthrough design - Wireless</p>
                         </div>
@@ -231,11 +233,10 @@
                         </div>
                     </div>
                 </div>
-                @foreach (var item in collection)
+                @foreach (ECommerceASP.Models.Item item in Model.displayedListOfItems)
                 {
-                    @Html.RenderPartial("~/View/ECommerce/_ItemPartial",item)
+                    @Html.Partial("_ItemPartial", item)           
                 }
-
             </div>
         </div>
     </div>

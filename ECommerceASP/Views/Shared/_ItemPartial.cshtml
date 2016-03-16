@@ -1,14 +1,14 @@
-﻿@using EntityFramework.Project
+﻿@model ECommerceASP.Models.Item
 
 <div class="col-sm-4 col-lg-4 col-md-4">
     <div class="thumbnail">
-        <img src="#" alt="">
+        <img src="~/Content/Images/placeholder.jpg" alt="">
         <div class="caption">
-            <h4 class="pull-right">item.price</h4>
+            <h4 class="pull-right">@Model.Price</h4>
             <h4>
-                <a href="#">{}</a>
+                <a href="#">@Model.Name</a>
             </h4>
-            <p>{}</p>
+            <p>@Model.Item_description</p>
         </div>
         <div class="ratings">
             <p class="pull-right">0 reviews</p>
