@@ -20,6 +20,8 @@ namespace ECommerceASP.Controllers
             return View();
         }
 
+        //random change
+
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";
